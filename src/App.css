@@ -19,7 +19,7 @@ h1, h2 {
 
 /* Hero Section */
 .hero {
-  background-image: url('./assets/bg_image1');
+  background-image: url('./assets/bg_image.png');
   background-size: cover;
   background-position: center;
   height: 100vh;

@@ -20,7 +20,7 @@ const Hero = () => {
                     </li>
                 </ul>
             </nav>
-            <div class="hero-content">
+            <div className="hero-content">
                 <h1 data-aos="fade-up">Hello, I'm Aritra Dutta</h1>
                 <p data-aos="fade-up" data-aos-delay="100">
                     MERN Stack Developer
@@ -28,7 +28,7 @@ const Hero = () => {
                 <a
                     href="resume.pdf"
                     download
-                    class="btn"
+                    className="btn"
                     data-aos="fade-up"
                     data-aos-delay="300"
                 >
