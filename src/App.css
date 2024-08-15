@@ -9,8 +9,25 @@ body {
 }
 
 a {
-  color: #333;
+  color: #fff;
   text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+  animation: colorChange 2s ease-in-out 0s infinite alternate both;
+}
+
+@keyframes colorChange {
+  0% {
+    color: #000;
+  }
+  50% {
+    color: #555;
+  }
+  100% {
+    color: #000;
+  }
 }
 
 h1, h2 {
@@ -19,7 +36,7 @@ h1, h2 {
 
 /* Hero Section */
 .hero {
-  background-image: url('./assets/bg_image.png');
+  background-image: url('./assets/img/bg_image2.avif');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -122,6 +139,7 @@ nav ul li {
   width: 300px;
   margin: 10px;
   position: relative;
+  background-color: gainsboro;
 }
 
 .portfolio-item img {
