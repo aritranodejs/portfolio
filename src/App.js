@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
+import Education from './components/Education';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import './App.css';
@@ -24,6 +25,7 @@ const App = () => {
             <ToastContainer />
             <Hero />
             <About />
+            <Education />
             <Skills />
             <Portfolio />
             <Contact />

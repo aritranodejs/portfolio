@@ -229,48 +229,85 @@ nav ul li {
   padding: 20px;
 }
 
+/* Education Section */
+.education {
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.education-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.education-item {
+  display: flex;
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.education-item:hover {
+  transform: scale(1.03);
+}
+
+.education-image {
+  width: 30%;
+  min-width: 150px;
+  background-color: #333;
+}
+
+.education-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.education-content {
+  padding: 20px;
+  text-align: left;
+  flex: 1;
+}
+
+.education-content h3 {
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.education-content p {
+  margin: 5px 0;
+  color: #555;
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-content p {
-    font-size: 1.2rem;
-  }
-
-  .skill {
+  .education-item {
+    flex-direction: column;
     width: 100%;
   }
 
-  .portfolio-item {
-    width: calc(100% - 20px);
+  .education-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .education-content {
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-content h1 {
-    font-size: 2rem;
+  .education-content h3 {
+    font-size: 1.2rem;
   }
 
-  .hero-content p {
-    font-size: 1rem;
-  }
-
-  nav ul li {
-    display: block;
-    margin: 10px 0;
-  }
-
-  .portfolio-item {
-    width: calc(100% - 20px);
-  }
-
-  .btn {
-    padding: 10px 15px;
-  }
-
-  .footer {
+  .education-content p {
     font-size: 0.9rem;
   }
 }
