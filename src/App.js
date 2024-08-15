@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'aos/dist/aos.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -19,6 +21,7 @@ const App = () => {
 
     return (
         <div>
+            <ToastContainer />
             <Hero />
             <About />
             <Skills />
