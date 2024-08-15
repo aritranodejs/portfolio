@@ -367,57 +367,6 @@ h1, h2 {
 
 /* Media Queries */
 @media (max-width: 768px) {
-
-  nav {
-    display: none; /* Hide the standard nav */
-  }
-
-  .nav-toggle {
-    display: block;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    z-index: 1000; /* Ensure it's above other elements */
-  }
-
-  .nav-menu {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 1000; /* Ensure it's above other elements */
-  }
-
-  .nav-menu.show {
-    display: flex;
-  }
-
-  .nav-menu ul {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    justify-content: space-around;
-  }
-
-  .nav-menu ul li {
-    margin: 0;
-  }
-
-  .nav-menu ul li a {
-    padding: 10px;
-    text-align: center;
-  }
-  
   .education-item {
     flex-direction: column;
     width: 100%;
