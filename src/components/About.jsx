@@ -7,7 +7,7 @@ const About = () => {
       <h2 data-aos="fade-right">About Me</h2>
       <img src={profilePicture} alt="Profile" data-aos="zoom-in" />
       <p data-aos="fade-left">
-        Passionate and driven Junior Software Engineer with a strong focus on
+        Passionate and driven Software Engineer with a strong focus on
         Node.js, aspiring to specialize and grow as a Node.js developer. I bring
         hands-on experience in JavaScript, Node.js, Express.js, MySQL, MongoDB,
         PHP, and Laravel, with a commitment to delivering innovative software
