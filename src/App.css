@@ -20,18 +20,19 @@ a:hover {
 
 @keyframes colorChange {
   0% {
-    color: #000;
+    color: #fff;
   }
   50% {
-    color: #555;
+    color: #000;
   }
   100% {
-    color: #000;
+    color: #fff;
   }
 }
 
 h1, h2 {
   text-align: center;
+  margin: 20px 0;
 }
 
 /* Hero Section */
@@ -46,6 +47,7 @@ h1, h2 {
   align-items: center;
   text-align: center;
   color: white;
+  padding: 20px;
 }
 
 nav ul {
@@ -82,14 +84,14 @@ nav ul li {
 
 /* About Section */
 .about {
-  padding: 50px;
+  padding: 50px 20px;
   background-color: #fff;
   text-align: center;
 }
 
 /* Skills Section */
 .skills {
-  padding: 50px;
+  padding: 50px 20px;
   background-color: #f4f4f4;
   text-align: center;
 }
@@ -125,7 +127,7 @@ nav ul li {
 
 /* Portfolio Section */
 .portfolio {
-  padding: 50px;
+  padding: 50px 20px;
   background-color: #f4f4f4;
 }
 
@@ -140,6 +142,11 @@ nav ul li {
   margin: 10px;
   position: relative;
   background-color: gainsboro;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: scale(1.05);
 }
 
 .portfolio-item img {
@@ -170,13 +177,13 @@ nav ul li {
 
 /* Contact Section */
 .contact {
-  padding: 50px;
+  padding: 50px 20px;
   background-color: #fff;
   text-align: center;
 }
 
 #contact-form {
-  max-width: 600px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -188,10 +195,13 @@ nav ul li {
   margin: 10px 0;
   border: 1px solid #ddd;
   border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #contact-form textarea {
   resize: vertical;
+  min-height: 150px;
 }
 
 #contact-form button {
@@ -213,4 +223,50 @@ nav ul li {
   color: white;
   text-align: center;
   padding: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+
+  .skill {
+    width: 100%;
+  }
+
+  .portfolio-item {
+    width: calc(100% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .portfolio-item {
+    width: calc(100% - 20px);
+  }
+
+  .btn {
+    padding: 10px 15px;
+  }
+
+  .footer {
+    font-size: 0.9rem;
+  }
 }
