@@ -19,7 +19,7 @@ const About = () => {
         change through technology.
       </p>
       <blockquote data-aos="fade-left" data-aos-delay="100">
-        "Quality code is not just written; it’s meticulously crafted,
+        "Quality code is not just written; it is meticulously crafted,
         continuously improved, and thoroughly understood."
       </blockquote>
     </section>

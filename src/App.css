@@ -20,6 +20,45 @@ body {
   color: inherit;
 }
 
+/* Navigation Menu */
+/* nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+} */
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 15px;
+  display: block;
+}
+
+/* Mobile Navigation */
+.nav-toggle {
+  display: none;
+}
+
+.nav-menu {
+  display: flex;
+}
+
 a {
   color: #fff;
   text-decoration: none;
@@ -60,16 +99,6 @@ h1, h2 {
   text-align: center;
   color: white;
   padding: 20px;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 15px;
 }
 
 .hero-content h1 {
@@ -338,6 +367,57 @@ nav ul li {
 
 /* Media Queries */
 @media (max-width: 768px) {
+
+  nav {
+    display: none; /* Hide the standard nav */
+  }
+
+  .nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 1000; /* Ensure it's above other elements */
+  }
+
+  .nav-menu {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other elements */
+  }
+
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .nav-menu ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .nav-menu ul li {
+    margin: 0;
+  }
+
+  .nav-menu ul li a {
+    padding: 10px;
+    text-align: center;
+  }
+  
   .education-item {
     flex-direction: column;
     width: 100%;
@@ -364,6 +444,13 @@ nav ul li {
   .skill-details {
     width: calc(100% - 50px); /* Adjust this for better scaling on smaller screens */
   }
+
+  #contact-form {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 480px) {
@@ -373,5 +460,12 @@ nav ul li {
 
   .education-content p {
     font-size: 0.9rem;
+  }
+
+  #contact-form {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
   }
 }
