@@ -35,16 +35,20 @@ const Portfolio = () => {
     },
     {
       title: "Floyd's Lanes",
-      description: "A brief description of the Floyd's Lanes project.",
-      backend: "Node.js, Express.js",
+      description: `Developed a user-friendly website enabling seamless shuttle bookings for customers. The platform offers Admin and Customer roles, allowing customers to book shuttles for specific dates and events while choosing from various car categories.`,
+      backend: "Laravel",
       database: "MySQL",
-      frontend: "React.js",
+      frontend: "HTML,CSS,JavaScript,AJAX",
       image: floydsImage,
       liveUrl: "https://floydslanes.com",
     },
     {
       title: "Stub Avenue",
-      description: "A brief description of the Stub Avenue project.",
+      description: `Stub Avenue revolutionizes the event ticketing landscape by granting organizers unparalleled control over their events. This dynamic platform empowers event organizers to effortlessly create, share, advertise, and sell tickets, while delivering comprehensive event analytics and reports.
+        Stub Avenue supports the generation of e-tickets and offers a range of customizable, secure physical tickets, all seamlessly scannable via mobile devices for robust entry management.
+        For users, Stub Avenue simplifies the event experience with a user-friendly interface that allows for quick and easy searching and purchasing of e-tickets directly from their mobile devices.
+        By continuously evolving its toolset, Stub Avenue strives to provide both organizers and patrons with the ideal event experience, blending convenience, security, and efficiency in one innovative solution.
+        `,
       backend: "Node.js, Express.js",
       database: "MySQL",
       frontend: "React.js",

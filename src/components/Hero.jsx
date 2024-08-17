@@ -49,9 +49,11 @@ const Hero = () => {
                 MERN Stack Developer
                 </p>
                 <a
-                href="resume.pdf"
+                href="https://docs.google.com/document/d/1Sv7rZkpbkD4YA_n2GyhxioySHOhxoSb0wvKBtkfp4eQ/edit#heading=h.4c8x24hj4h4m"
                 download
                 className="btn"
+                target="_blank"
+                rel="noopener noreferrer"
                 data-aos="fade-up"
                 data-aos-delay="300"
                 >
