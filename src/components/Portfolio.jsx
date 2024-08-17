@@ -68,7 +68,6 @@ const Portfolio = () => {
                         <img src={project.image} alt={project.title} />
                         <div className="overlay">
                             <h3>{project.title}</h3>
-                            <p>A brief description of the project.</p>
                             <div className="overlay-buttons">
                                 <button className="btn-info" onClick={() => openModal(project)}>Info</button>
                                 <a className="btn btn-live" href={project.liveUrl} target="_blank" rel="noopener noreferrer">Live</a>
