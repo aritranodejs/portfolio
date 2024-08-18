@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import bcuzImage from "../assets/img/bcuz.svg";
 import floydsImage from "../assets/img/floyds.svg";
 import stubImage from "../assets/img/stub.svg";
@@ -100,6 +102,9 @@ const Portfolio = () => {
         className="modal-content"
         overlayClassName="modal-overlay"
       >
+        <button className="btn-cross" onClick={closeModal}>
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
         <h2>{selectedProject.title}</h2>
         <p>{selectedProject.description}</p>
         <h3>Tech Stack :</h3>

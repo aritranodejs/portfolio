@@ -246,20 +246,35 @@ h1, h2 {
 .btn-close {
   background-color: #007bff;
   color: #fff;
-  /* border: none; */
+  border: none;
   border-radius: 5px;
-  /* padding: 0px 2px; */
   cursor: pointer;
   font-size: 16px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  position: absolute; /* Change from sticky to absolute */
+  bottom: 20px; /* Position it 20px from the bottom */
+  right: 20px; /* Position it 20px from the right */
 }
 
 .btn-close:hover {
   background-color: #c82333;
 }
 
+.btn-cross {
+  background-color: transparent; /* Makes the background transparent */
+  border: none; /* Removes any default border */
+  color: inherit; /* Inherits the text color from the parent element */
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+  font-size: 1.5rem; /* Adjusts the size of the icon */
+  padding: 0; /* Removes any default padding */
+  position: absolute; /* Allows positioning within the modal */
+  top: 10px; /* Adjusts position relative to the top of the modal */
+  right: 10px; /* Adjusts position relative to the right of the modal */
+  outline: none; /* Removes the focus outline */
+}
+
+.btn-cross:hover {
+  color: #f00; /* Optional: Change color on hover for better UX */
+}
 
 /* Portfolio Section */
 .portfolio {
