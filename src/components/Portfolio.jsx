@@ -22,7 +22,7 @@ const Portfolio = () => {
         BCUZ uniquely combines crowdfunding with local business engagement, offering a transparent and interactive way for supporters to back causes they care about while enjoying their meals.`,
       backend: "Node.js, Express.js",
       database: "MySQL",
-      frontend: "React.js",
+      frontend: "Next.js",
       image: bcuzImage,
       liveUrl: "https://bcuz.us",
     },
