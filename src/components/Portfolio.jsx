@@ -17,9 +17,9 @@ const Portfolio = () => {
     {
       title: "BCUZ",
       description: `
-        BCUZ is an innovative crowdfunding platform that seamlessly connects organizers, supporters, and restaurants to fund meaningful causes. Organizers can create campaigns, add restaurants either manually or via Google Places API, and start fundraising. Admins ensure the credibility of the platform by approving campaigns and restaurant registrations.
-        Supporters can browse campaigns, view detailed information, select a restaurant, and place orders directly through the platform. Funds from orders are split between the beneficiary and the restaurant, with the admin controlling the distribution. Restaurants can manage orders via tablet or web application, contributing to the campaign’s success while receiving a portion of the raised funds.
-        BCUZ combines crowdfunding with local business engagement, offering a transparent and interactive way for supporters to back causes they care about while enjoying their meals.`,
+        BCUZ is an innovative crowdfunding platform that effortlessly connects organizers, supporters, and restaurants to fund meaningful causes. Organizers can create campaigns, search for restaurants by ZIP code, invite them to participate, and begin fundraising. Restaurants can easily create accounts on the platform and participate in campaigns. Admins ensure the platform’s credibility by approving campaigns and restaurant registrations. Additionally, restaurants have the authority to approve campaigns they’ve been invited to by organizers.
+        Supporters can explore campaigns, view detailed information, choose a restaurant, and place orders directly through the platform. The funds from these orders are distributed between the beneficiary and the restaurant, with the admin overseeing the allocation. Restaurants can manage orders via a tablet or web application, contributing to the campaign's success while earning a share of the raised funds.
+        BCUZ uniquely combines crowdfunding with local business engagement, offering a transparent and interactive way for supporters to back causes they care about while enjoying their meals.`,
       backend: "Node.js, Express.js",
       database: "MySQL",
       frontend: "React.js",

@@ -121,6 +121,47 @@ h1, h2 {
   text-align: center;
 }
 
+.blockquote {
+  font-family: 'Georgia', serif;
+  /* font-size: 1.5rem; */
+  font-style: italic;
+  color: #333;
+  border-left: 5px solid #007bff;
+  padding-left: 20px;
+  /* margin: 20px 0; */
+  /* position: relative; */
+  background: #f9f9f9;
+  padding: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.blockquote::before {
+  content: open-quote;
+  font-size: 4rem; /* Large opening quote mark */
+  position: absolute;
+  left: -20px; /* Move the quote mark to the left */
+  top: -20px;
+  color: #007bff; /* Blue color for the quote mark to match the border */
+  font-family: 'Times New Roman', serif; /* Use a different serif font for quotes */
+}
+
+.blockquote::after {
+  content: close-quote;
+  font-size: 4rem; /* Large closing quote mark */
+  position: absolute;
+  right: -20px; /* Move the quote mark to the right */
+  bottom: -20px;
+  color: #007bff; /* Blue color for the quote mark to match the border */
+  font-family: 'Times New Roman', serif;
+}
+
+.blockquote:hover {
+  color: #007bff; /* Change the text color on hover for emphasis */
+  border-left-color: #c82333; /* Change border color on hover */
+}
+
 /* Skills Section */
 .skills {
   padding: 50px 20px;
@@ -297,6 +338,7 @@ h1, h2 {
 }
 
 .portfolio-item {
+  height: 300px;
   width: 300px;
   margin: 10px;
   position: relative;
@@ -304,6 +346,9 @@ h1, h2 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 8px;
   overflow: hidden;
+  display: flex; /* Use flexbox to control the alignment */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
 }
 
 .portfolio-item:hover {
@@ -312,7 +357,9 @@ h1, h2 {
 }
 
 .portfolio-item img {
-  width: 100%;
+  max-width: 100%; /* Ensure the image does not exceed container width */
+  height: auto; /* Maintain the aspect ratio */
+  display: block; /* Remove any unwanted space around the image */
   border-radius: 8px 8px 0 0;
 }
 
