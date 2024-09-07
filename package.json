@@ -1,6 +1,6 @@
 {
-  "homepage": "https://aritradapl.github.io/portfolio_frontend/",
-  "name": "my-portfolio",
+  "homepage": "https://github.com/aritranodejs/portfolio",
+  "name": "aritra-portfolio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
