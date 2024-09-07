@@ -28,12 +28,12 @@ const Portfolio = () => {
     },
     {
       title: "VRAS",
-      description: "A brief description of the VRAS project.",
+      description: "",
       backend: "Node.js, Express.js",
       database: "MySQL",
       frontend: "React.js",
       image: vrasImage,
-      liveUrl: "https://vras.co.il:5000",
+      liveUrl: "http://vras.co.il:5050",
     },
     {
       title: "Floyd's Lanes",
