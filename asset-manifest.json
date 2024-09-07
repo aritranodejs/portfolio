@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/portfolio_frontend/static/css/main.a5916c59.css",
-    "main.js": "/portfolio_frontend/static/js/main.b87d70ad.js",
-    "static/js/453.acca0757.chunk.js": "/portfolio_frontend/static/js/453.acca0757.chunk.js",
-    "static/media/fa-solid-900.ttf": "/portfolio_frontend/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
-    "static/media/stub.svg": "/portfolio_frontend/static/media/stub.8fb6e9f462b7a024c2bdd2bd0b195dc8.svg",
-    "static/media/fa-brands-400.ttf": "/portfolio_frontend/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
-    "static/media/fa-solid-900.woff2": "/portfolio_frontend/static/media/fa-solid-900.93f719f4d62bfa3e748c.woff2",
-    "static/media/fa-brands-400.woff2": "/portfolio_frontend/static/media/fa-brands-400.bb8d5a145e22822103fb.woff2",
-    "static/media/bcuz.svg": "/portfolio_frontend/static/media/bcuz.1c18b6b670152cd08a520bd41098c09f.svg",
-    "static/media/fa-regular-400.ttf": "/portfolio_frontend/static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
-    "static/media/floyds.svg": "/portfolio_frontend/static/media/floyds.65421e1f9ca00c87c94ac6747806155a.svg",
-    "static/media/fa-regular-400.woff2": "/portfolio_frontend/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
-    "static/media/profile-picture.jpg": "/portfolio_frontend/static/media/profile-picture.9c10b3ef3d4b6a020bac.jpg",
-    "static/media/fa-v4compatibility.ttf": "/portfolio_frontend/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
-    "static/media/fa-v4compatibility.woff2": "/portfolio_frontend/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
-    "static/media/bg_image2.avif": "/portfolio_frontend/static/media/bg_image2.ef10318b92dcf6f572f0.avif",
-    "index.html": "/portfolio_frontend/index.html",
-    "main.a5916c59.css.map": "/portfolio_frontend/static/css/main.a5916c59.css.map",
-    "main.b87d70ad.js.map": "/portfolio_frontend/static/js/main.b87d70ad.js.map",
-    "453.acca0757.chunk.js.map": "/portfolio_frontend/static/js/453.acca0757.chunk.js.map"
+    "main.css": "/aritranodejs/portfolio/static/css/main.28ef00ad.css",
+    "main.js": "/aritranodejs/portfolio/static/js/main.9e3961e3.js",
+    "static/js/453.99c938f1.chunk.js": "/aritranodejs/portfolio/static/js/453.99c938f1.chunk.js",
+    "static/media/fa-solid-900.ttf": "/aritranodejs/portfolio/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
+    "static/media/stub.svg": "/aritranodejs/portfolio/static/media/stub.8fb6e9f462b7a024c2bdd2bd0b195dc8.svg",
+    "static/media/fa-brands-400.ttf": "/aritranodejs/portfolio/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
+    "static/media/fa-solid-900.woff2": "/aritranodejs/portfolio/static/media/fa-solid-900.93f719f4d62bfa3e748c.woff2",
+    "static/media/fa-brands-400.woff2": "/aritranodejs/portfolio/static/media/fa-brands-400.bb8d5a145e22822103fb.woff2",
+    "static/media/bcuz.svg": "/aritranodejs/portfolio/static/media/bcuz.1c18b6b670152cd08a520bd41098c09f.svg",
+    "static/media/fa-regular-400.ttf": "/aritranodejs/portfolio/static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
+    "static/media/floyds.svg": "/aritranodejs/portfolio/static/media/floyds.65421e1f9ca00c87c94ac6747806155a.svg",
+    "static/media/fa-regular-400.woff2": "/aritranodejs/portfolio/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
+    "static/media/profile-picture.jpg": "/aritranodejs/portfolio/static/media/profile-picture.9c10b3ef3d4b6a020bac.jpg",
+    "static/media/fa-v4compatibility.ttf": "/aritranodejs/portfolio/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
+    "static/media/fa-v4compatibility.woff2": "/aritranodejs/portfolio/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
+    "static/media/bg_image2.avif": "/aritranodejs/portfolio/static/media/bg_image2.ef10318b92dcf6f572f0.avif",
+    "index.html": "/aritranodejs/portfolio/index.html",
+    "main.28ef00ad.css.map": "/aritranodejs/portfolio/static/css/main.28ef00ad.css.map",
+    "main.9e3961e3.js.map": "/aritranodejs/portfolio/static/js/main.9e3961e3.js.map",
+    "453.99c938f1.chunk.js.map": "/aritranodejs/portfolio/static/js/453.99c938f1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a5916c59.css",
-    "static/js/main.b87d70ad.js"
+    "static/css/main.28ef00ad.css",
+    "static/js/main.9e3961e3.js"
   ]
 }
