@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/aritranodejs/portfolio/static/css/main.28ef00ad.css",
-    "main.js": "/aritranodejs/portfolio/static/js/main.9ba6c6e3.js",
-    "static/js/453.1407b060.chunk.js": "/aritranodejs/portfolio/static/js/453.1407b060.chunk.js",
-    "static/media/fa-solid-900.ttf": "/aritranodejs/portfolio/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
-    "static/media/stub.svg": "/aritranodejs/portfolio/static/media/stub.8fb6e9f462b7a024c2bdd2bd0b195dc8.svg",
-    "static/media/fa-brands-400.ttf": "/aritranodejs/portfolio/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
-    "static/media/fa-solid-900.woff2": "/aritranodejs/portfolio/static/media/fa-solid-900.93f719f4d62bfa3e748c.woff2",
-    "static/media/fa-brands-400.woff2": "/aritranodejs/portfolio/static/media/fa-brands-400.bb8d5a145e22822103fb.woff2",
-    "static/media/bcuz.svg": "/aritranodejs/portfolio/static/media/bcuz.1c18b6b670152cd08a520bd41098c09f.svg",
-    "static/media/fa-regular-400.ttf": "/aritranodejs/portfolio/static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
-    "static/media/floyds.svg": "/aritranodejs/portfolio/static/media/floyds.65421e1f9ca00c87c94ac6747806155a.svg",
-    "static/media/fa-regular-400.woff2": "/aritranodejs/portfolio/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
-    "static/media/profile-picture.jpg": "/aritranodejs/portfolio/static/media/profile-picture.9c10b3ef3d4b6a020bac.jpg",
-    "static/media/fa-v4compatibility.ttf": "/aritranodejs/portfolio/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
-    "static/media/fa-v4compatibility.woff2": "/aritranodejs/portfolio/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
-    "static/media/bg_image2.avif": "/aritranodejs/portfolio/static/media/bg_image2.ef10318b92dcf6f572f0.avif",
-    "index.html": "/aritranodejs/portfolio/index.html",
-    "main.28ef00ad.css.map": "/aritranodejs/portfolio/static/css/main.28ef00ad.css.map",
-    "main.9ba6c6e3.js.map": "/aritranodejs/portfolio/static/js/main.9ba6c6e3.js.map",
-    "453.1407b060.chunk.js.map": "/aritranodejs/portfolio/static/js/453.1407b060.chunk.js.map"
+    "main.css": "/portfolio/static/css/main.ba275b1d.css",
+    "main.js": "/portfolio/static/js/main.2a4f68b3.js",
+    "static/js/453.1407b060.chunk.js": "/portfolio/static/js/453.1407b060.chunk.js",
+    "static/media/fa-solid-900.ttf": "/portfolio/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
+    "static/media/stub.svg": "/portfolio/static/media/stub.8fb6e9f462b7a024c2bdd2bd0b195dc8.svg",
+    "static/media/fa-brands-400.ttf": "/portfolio/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
+    "static/media/fa-solid-900.woff2": "/portfolio/static/media/fa-solid-900.93f719f4d62bfa3e748c.woff2",
+    "static/media/fa-brands-400.woff2": "/portfolio/static/media/fa-brands-400.bb8d5a145e22822103fb.woff2",
+    "static/media/bcuz.svg": "/portfolio/static/media/bcuz.1c18b6b670152cd08a520bd41098c09f.svg",
+    "static/media/fa-regular-400.ttf": "/portfolio/static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
+    "static/media/floyds.svg": "/portfolio/static/media/floyds.65421e1f9ca00c87c94ac6747806155a.svg",
+    "static/media/fa-regular-400.woff2": "/portfolio/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
+    "static/media/profile-picture.jpg": "/portfolio/static/media/profile-picture.9c10b3ef3d4b6a020bac.jpg",
+    "static/media/fa-v4compatibility.ttf": "/portfolio/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
+    "static/media/fa-v4compatibility.woff2": "/portfolio/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
+    "static/media/bg_image2.avif": "/portfolio/static/media/bg_image2.ef10318b92dcf6f572f0.avif",
+    "index.html": "/portfolio/index.html",
+    "main.ba275b1d.css.map": "/portfolio/static/css/main.ba275b1d.css.map",
+    "main.2a4f68b3.js.map": "/portfolio/static/js/main.2a4f68b3.js.map",
+    "453.1407b060.chunk.js.map": "/portfolio/static/js/453.1407b060.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.28ef00ad.css",
-    "static/js/main.9ba6c6e3.js"
+    "static/css/main.ba275b1d.css",
+    "static/js/main.2a4f68b3.js"
   ]
 }
