@@ -1,28 +1,24 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.3d95f5ea.css",
-    "main.js": "/portfolio/static/js/main.7bb65411.js",
+    "main.css": "/portfolio/static/css/main.05937582.css",
+    "main.js": "/portfolio/static/js/main.5ae2e7a4.js",
     "static/js/453.1407b060.chunk.js": "/portfolio/static/js/453.1407b060.chunk.js",
     "static/media/fa-solid-900.ttf": "/portfolio/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
-    "static/media/stub.svg": "/portfolio/static/media/stub.8fb6e9f462b7a024c2bdd2bd0b195dc8.svg",
     "static/media/fa-brands-400.ttf": "/portfolio/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
     "static/media/fa-solid-900.woff2": "/portfolio/static/media/fa-solid-900.93f719f4d62bfa3e748c.woff2",
     "static/media/fa-brands-400.woff2": "/portfolio/static/media/fa-brands-400.bb8d5a145e22822103fb.woff2",
-    "static/media/bcuz.svg": "/portfolio/static/media/bcuz.1c18b6b670152cd08a520bd41098c09f.svg",
     "static/media/fa-regular-400.ttf": "/portfolio/static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
-    "static/media/floyds.svg": "/portfolio/static/media/floyds.65421e1f9ca00c87c94ac6747806155a.svg",
     "static/media/fa-regular-400.woff2": "/portfolio/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
     "static/media/profile-picture.jpg": "/portfolio/static/media/profile-picture.9c10b3ef3d4b6a020bac.jpg",
-    "static/media/legis.webp": "/portfolio/static/media/legis.d4cd5e7eb2bead9dc9a1.webp",
     "static/media/fa-v4compatibility.ttf": "/portfolio/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
     "static/media/fa-v4compatibility.woff2": "/portfolio/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
     "index.html": "/portfolio/index.html",
-    "main.3d95f5ea.css.map": "/portfolio/static/css/main.3d95f5ea.css.map",
-    "main.7bb65411.js.map": "/portfolio/static/js/main.7bb65411.js.map",
+    "main.05937582.css.map": "/portfolio/static/css/main.05937582.css.map",
+    "main.5ae2e7a4.js.map": "/portfolio/static/js/main.5ae2e7a4.js.map",
     "453.1407b060.chunk.js.map": "/portfolio/static/js/453.1407b060.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3d95f5ea.css",
-    "static/js/main.7bb65411.js"
+    "static/css/main.05937582.css",
+    "static/js/main.5ae2e7a4.js"
   ]
 }
