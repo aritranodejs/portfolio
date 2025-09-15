@@ -7,16 +7,10 @@ const About = () => {
       <h2 data-aos="fade-right">About Me</h2>
       <img src={profilePicture} alt="Profile" data-aos="zoom-in" />
       <p data-aos="fade-left">
-        Passionate and driven Software Engineer with a strong focus on
-        Node.js, aspiring to specialize and grow as a Node.js developer. I bring
-        hands-on experience in JavaScript, Node.js, Express.js, MySQL, MongoDB,
-        PHP, and Laravel, with a commitment to delivering innovative software
-        solutions that push technological boundaries. I thrive in collaborative
-        environments where creativity and problem-solving are at the forefront,
-        and I'm continuously seeking opportunities to expand my skill set and
-        deepen my expertise in Node.js. Let's connect to explore how my passion
-        for Node.js can contribute to impactful projects and foster positive
-        change through technology.
+        I’m a <strong>MERN Stack Engineer</strong> building fast, secure, and delightful products end‑to‑end.
+        From <strong>Node.js/Express</strong> APIs and SQL/NoSQL data models to <strong>React</strong> interfaces,
+        I ship features that move KPIs—reducing latency, improving UX, and enabling new workflows.
+        I care about readable code, thoughtful architecture, and teams that move with quality.
       </p>
       <blockquote class="blockquote" data-aos="fade-left" data-aos-delay="100">
         "Quality code is not just written; it is meticulously crafted,

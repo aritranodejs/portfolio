@@ -10,6 +10,8 @@ import Skills from './components/Skills';
 import Education from './components/Education';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
+import Certifications from './components/Certifications';
+import Chatbot from './components/Chatbot';
 import './App.css';
 
 const App = () => {
@@ -27,8 +29,10 @@ const App = () => {
             <About />
             <Education />
             <Skills />
+            <Certifications />
             <Portfolio />
             <Contact />
+            <Chatbot />
             <footer className="footer">
                 <p>&copy; 2024 Aritra Dutta. All rights reserved.</p>
             </footer>

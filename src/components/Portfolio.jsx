@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import bcuzImage from "../assets/img/bcuz.svg";
-import floydsImage from "../assets/img/floyds.svg";
-import stubImage from "../assets/img/stub.svg";
-import vrasImage from "../assets/img/vras.png";
+// Removed project images to switch to content-only premium cards
 
 Modal.setAppElement("#root");
 
 const Portfolio = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState({});
+  const [filter, setFilter] = useState('All');
 
   const projects = [
     {
@@ -23,17 +21,53 @@ const Portfolio = () => {
       backend: "Node.js, Express.js",
       database: "MySQL",
       frontend: "Next.js",
-      image: bcuzImage,
+      image: null,
       liveUrl: "https://bcuz.us",
+      categories: ["Node.js", "Next.js", "MySQL"],
+      outcomes: [
+        "Optimized queries reduced API latency by ~25%",
+        "Enabled multi-role workflows for admins and restaurants",
+      ],
     },
     {
       title: "VRAS",
-      description: "",
+      description: "Developed browser API and backend for a Virtual Reality Application System with secure auth and role-based scenario access for security personnel.",
       backend: "Node.js, Express.js",
       database: "MySQL",
       frontend: "React.js",
-      image: vrasImage,
+      image: null,
       liveUrl: "http://vras.co.il:5050",
+      categories: ["Node.js", "React", "MySQL"],
+      outcomes: [
+        "Role-based access improved security and auditability",
+        "Solid auth flow hardened sensitive routes",
+      ],
+    },
+    {
+      title: "Legis Music",
+      description: "Royalty-free music distribution platform enabling search, licensing and streaming of copyright-safe tracks.",
+      backend: "Node.js, Express.js",
+      database: "MySQL",
+      frontend: "Next.js",
+      image: null,
+      liveUrl: "https://www.legismusic.com/",
+      categories: ["Node.js", "Next.js", "MySQL"],
+      outcomes: [
+        "Scaled catalog search and licensing flows",
+      ],
+    },
+    {
+      title: "1st Choice Formation",
+      description: "Secure file management with roles: Super Admin, Employee, Client, including upload and access controls.",
+      backend: "Node.js, Express.js",
+      database: "MongoDB",
+      frontend: "React.js",
+      image: null,
+      liveUrl: "https://1st-choice-formation.smart-doc.co.uk",
+      categories: ["Node.js", "React", "MongoDB"],
+      outcomes: [
+        "Granular RBAC reduced support overhead for access issues",
+      ],
     },
     {
       title: "Floyd's Lanes",
@@ -41,8 +75,12 @@ const Portfolio = () => {
       backend: "Laravel",
       database: "MySQL",
       frontend: "HTML,CSS,JavaScript,AJAX",
-      image: floydsImage,
+      image: null,
       liveUrl: "https://floydslanes.com",
+      categories: ["Laravel", "MySQL"],
+      outcomes: [
+        "Streamlined bookings across car categories",
+      ],
     },
     {
       title: "Stub Avenue",
@@ -54,8 +92,13 @@ const Portfolio = () => {
       backend: "Node.js, Express.js",
       database: "MySQL",
       frontend: "React.js",
-      image: stubImage,
+      image: null,
       liveUrl: "https://stubavenue.com",
+      categories: ["Node.js", "React", "MySQL"],
+      outcomes: [
+        "Processed 1000+ ticket sales in first month",
+        "Optimized DB queries improved response ~20%",
+      ],
     },
   ];
 
@@ -71,24 +114,46 @@ const Portfolio = () => {
   return (
     <section id="portfolio" className="portfolio" data-aos="fade-up">
       <h2>My Work</h2>
+      <div className="portfolio-filter" role="tablist" aria-label="Project filters">
+        {["All","Node.js","React","Next.js","Laravel","MySQL","MongoDB"].map((cat) => (
+          <button
+            key={cat}
+            className={`filter-btn ${filter === cat ? 'active' : ''}`}
+            onClick={() => setFilter(cat)}
+            role="tab"
+            aria-selected={filter === cat}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
       <div className="portfolio-gallery">
-        {projects.map((project, index) => (
-          <div className="portfolio-item" key={index} data-aos="zoom-in">
-            <img src={project.image} alt={project.title} />
-            <div className="overlay">
-              <h3>{project.title}</h3>
-              <div className="overlay-buttons">
-                <button className="btn-info" onClick={() => openModal(project)}>
-                  Info
-                </button>
-                <a
-                  className="btn btn-live"
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Live
-                </a>
+        {projects
+          .filter(p => filter === 'All' || p.categories?.includes(filter))
+          .map((project, index) => (
+          <div className="portfolio-item" key={index} data-aos="zoom-in" data-aos-delay={index * 100}>
+            <div className="portfolio-card">
+              <div className="portfolio-card-body">
+                <h3 className="portfolio-title">{project.title}</h3>
+                <p className="portfolio-desc">{(project.description || '').toString().slice(0, 160)}{(project.description || '').length > 160 ? '…' : ''}</p>
+                <div className="portfolio-tags">
+                  {project.backend && <span className="portfolio-tag">{project.backend}</span>}
+                  {project.database && <span className="portfolio-tag">{project.database}</span>}
+                  {project.frontend && <span className="portfolio-tag">{project.frontend}</span>}
+                </div>
+                <div className="portfolio-actions">
+                  <button className="btn-portfolio-info" onClick={() => openModal(project)}>
+                    View More
+                  </button>
+                  <a
+                    className="btn-portfolio-live"
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Live Demo
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -105,7 +170,12 @@ const Portfolio = () => {
         <button className="btn-cross" onClick={closeModal}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
-        <h2>{selectedProject.title}</h2>
+        <h2 className="modal-title">{selectedProject.title}</h2>
+        <div className="modal-tags">
+          {selectedProject.backend && <span className="chip">{selectedProject.backend}</span>}
+          {selectedProject.database && <span className="chip">{selectedProject.database}</span>}
+          {selectedProject.frontend && <span className="chip">{selectedProject.frontend}</span>}
+        </div>
         <p>{selectedProject.description}</p>
         <h3>Tech Stack :</h3>
         <p>
@@ -117,6 +187,16 @@ const Portfolio = () => {
         <p>
           <strong>Frontend:</strong> {selectedProject.frontend}
         </p>
+        {selectedProject.outcomes?.length > 0 && (
+          <>
+            <h3>Outcomes:</h3>
+            <ul>
+              {selectedProject.outcomes.map((o, i) => (
+                <li key={i}>{o}</li>
+              ))}
+            </ul>
+          </>
+        )}
         <button className="btn-close" onClick={closeModal}>
           Close
         </button>
