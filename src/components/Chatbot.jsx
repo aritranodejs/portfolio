@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
 
 const Chatbot = () => {
   const [open, setOpen] = useState(false);
@@ -52,8 +53,37 @@ const Chatbot = () => {
     setLoading(true);
     setError("");
     try {
-      const dataText = intentReply(userMsg.text);
-      const reply = { role: "bot", text: dataText };
+      // Try GROQ API first
+      const payload = {
+        model: "gemma2-9b-it",
+        messages: [
+          { role: "system", content: "You are Aritra's helpful portfolio assistant. Keep answers concise and friendly." },
+          { role: "user", content: userMsg.text }
+        ],
+        temperature: 0.7,
+        max_tokens: 300,
+      };
+
+      const apiKey = process.env.REACT_APP_GROQ_API_KEY || process.env.GROQ_API_KEY;
+      if (!apiKey) {
+        throw new Error("Missing GROQ API key");
+      }
+
+      const aiResponse = await axios.post(
+        "https://api.groq.com/openai/v1/chat/completions",
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            "Content-Type": "application/json",
+          },
+          timeout: 15000,
+        }
+      );
+
+      const aiText = aiResponse?.data?.choices?.[0]?.message?.content?.trim();
+      const finalText = aiText && aiText.length > 0 ? aiText : intentReply(userMsg.text);
+      const reply = { role: "bot", text: finalText };
       setMessages((prev) => [...prev, reply]);
     } catch (err) {
       setError("Unable to reach assistant. Please try again later.");
