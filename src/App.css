@@ -366,10 +366,10 @@ h1, h2 {
 /* Mobile-first adjustments for Skills */
 @media (max-width: 768px) {
   .skills { padding: 56px 14px; }
-  .skills-group { max-width: 100%; margin: 0 auto 32px; padding: 0; }
+  .skills-group { max-width: 100%; margin: 0 auto 24px; padding: 0; box-sizing: border-box; }
   .skills-title { font-size: 1.3rem; margin-bottom: 16px; }
-  .skills-container { grid-template-columns: 1fr; row-gap: 18px; }
-  .skill { min-height: 120px; padding: 14px; border-radius: 12px; }
+  .skills-container { grid-template-columns: 1fr; row-gap: 16px; column-gap: 0; padding: 0; margin: 0; width: 100%; box-sizing: border-box; }
+  .skill { min-height: 120px; padding: 14px; border-radius: 12px; width: 100%; margin: 0; box-sizing: border-box; }
   .skill-content { gap: 10px; }
   .skill-logo { width: 32px; height: 32px; margin-right: 10px; }
   .skill-details h3 { font-size: 1rem; margin: 0 0 6px 0; }
