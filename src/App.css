@@ -174,7 +174,7 @@ h1, h2 {
   background-image: radial-gradient(1200px 600px at 20% 0%, rgba(79,70,229,.18), rgba(79,70,229,0) 60%),
                     radial-gradient(1000px 500px at 80% 10%, rgba(34,197,94,.16), rgba(34,197,94,0) 60%);
   background-color: var(--bg);
-  min-height: 92vh;
+  min-height: 62vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -183,7 +183,7 @@ h1, h2 {
   color: var(--text);
   padding: 20px;
   position: relative;
-  padding-top: 120px; /* account for fixed nav */
+  padding-top: 72px; /* account for fixed nav */
 }
 
 /* Parallax gradient layers */
@@ -218,15 +218,15 @@ h1, h2 {
 
 /* Premium hero glass card */
 .hero-content {
-  max-width: 900px;
-  width: calc(100% - 48px);
-  padding: 28px 24px 32px;
+  max-width: 860px;
+  width: calc(100% - 40px);
+  padding: 18px 20px 22px;
   border-radius: 20px;
   background: radial-gradient(1200px 600px at 10% -20%, rgba(99,102,241,.08), rgba(99,102,241,0) 60%),
               radial-gradient(1000px 500px at 90% -10%, rgba(34,197,94,.08), rgba(34,197,94,0) 60%),
               rgba(255,255,255,.45);
   border: 1px solid var(--card-border);
-  box-shadow: 0 30px 80px rgba(2,6,23,.15);
+  box-shadow: 0 18px 48px rgba(2,6,23,.12);
   backdrop-filter: blur(8px) saturate(1.1);
 }
 
@@ -363,8 +363,21 @@ h1, h2 {
   .skills-container > .skill::before { display: none; }
 }
 
+/* Mobile-first adjustments for Skills */
+@media (max-width: 768px) {
+  .skills { padding: 56px 14px; }
+  .skills-group { max-width: 100%; margin: 0 auto 32px; padding: 0; }
+  .skills-title { font-size: 1.3rem; margin-bottom: 16px; }
+  .skills-container { grid-template-columns: 1fr; row-gap: 18px; }
+  .skill { min-height: 120px; padding: 14px; border-radius: 12px; }
+  .skill-content { gap: 10px; }
+  .skill-logo { width: 32px; height: 32px; margin-right: 10px; }
+  .skill-details h3 { font-size: 1rem; margin: 0 0 6px 0; }
+  .progress-bar { height: 10px; margin-bottom: 6px; }
+  .skill .badge { top: 10px; right: 10px; font-size: 11px; padding: 3px 6px; }
+}
+
 .skill {
-  width: 70%;
   padding: 20px;
   background-color: var(--card-bg);
   border-radius: 10px;
@@ -772,7 +785,7 @@ h1, h2 {
 .cert-card { position: relative; display: flex; align-items: center; gap: 14px; padding: 18px 20px; border: 1px solid var(--card-border); background: linear-gradient(180deg, rgba(99,102,241,.05), rgba(34,197,94,.05)), var(--card-bg); border-radius: 16px; box-shadow: 0 16px 40px rgba(2,6,23,.12); transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
 .cert-card::before { content: ""; position: absolute; inset: 0; border-radius: 16px; padding: 1px; background: linear-gradient(90deg, rgba(99,102,241,.6), rgba(34,197,94,.6)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
 .cert-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(2,6,23,.18); }
-.cert-icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; color: #f59e0b; background: radial-gradient(circle at 30% 30%, rgba(245,158,11,.3), rgba(245,158,11,.12) 60%, transparent); box-shadow: inset 0 0 10px rgba(245,158,11,.3); }
+.cert-icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; color: #f59e0b; background: radial-gradient(circle at 30% 30%, rgba(245,158,11,.3), rgba(245,158,11,.12) 60%, transparent); box-shadow: inset 0 0 10px rgba(245,158,11,.3); flex-shrink: 0; }
 .cert-body h3 { margin: 0 0 4px; color: var(--text); font-size: 1rem; }
 .cert-body p { margin: 0; color: var(--muted); font-size: .9rem; }
 .cert-cta { margin-left: auto; color: var(--accent); display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--card-border); background: rgba(99,102,241,.08); transition: all .2s ease; position: relative; z-index: 1; }

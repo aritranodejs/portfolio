@@ -15,7 +15,7 @@ const Certifications = () => {
       <div className="cert-grid">
         {certs.map((c, i) => (
           <div key={c.title} className="cert-card" data-aos="zoom-in" data-aos-delay={i * 50}>
-            <div className="cert-icon"><FontAwesomeIcon icon={faCertificate} /></div>
+            <div className="cert-icon" aria-hidden="true"><FontAwesomeIcon icon={faCertificate} /></div>
             <div className="cert-body">
               <h3>{c.title}</h3>
             </div>
