@@ -20,7 +20,7 @@ const Certifications = () => {
               <h3>{c.title}</h3>
             </div>
             {c.link && (
-              <a className="cert-cta" href={c.link} target="_blank" rel="noopener noreferrer" title="View Certificate">
+              <a className="cert-cta" href={`${c.link}`} target="_blank" rel="noreferrer" title="View Certificate">
                 <FontAwesomeIcon icon={faExternalLinkAlt} />
               </a>
             )}
