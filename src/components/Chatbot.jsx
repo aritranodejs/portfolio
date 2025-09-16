@@ -53,12 +53,19 @@ const Chatbot = () => {
     setLoading(true);
     setError("");
     try {
+      // Build short history to keep replies contextual
+      const history = messages
+        .filter((m) => m.role === "user" || m.role === "bot")
+        .slice(-6)
+        .map((m) => ({ role: m.role === "bot" ? "assistant" : "user", content: m.text }));
+
       // Try GROQ API first
       const payload = {
-        model: "gemma2-9b-it",
+        model: "llama3-8b-8192",
         messages: [
           { role: "system", content: "You are Aritra's helpful portfolio assistant. Keep answers concise and friendly." },
-          { role: "user", content: userMsg.text }
+          ...history,
+          { role: "user", content: userMsg.text },
         ],
         temperature: 0.7,
         max_tokens: 300,
@@ -86,7 +93,9 @@ const Chatbot = () => {
       const reply = { role: "bot", text: finalText };
       setMessages((prev) => [...prev, reply]);
     } catch (err) {
-      setError("Unable to reach assistant. Please try again later.");
+      const apiErr = err?.response?.data?.error?.message || err?.message || "Unknown error";
+      // Show actionable error so we can diagnose missing key/CORS
+      setError(`AI error: ${apiErr}`);
       setMessages((prev) => [
         ...prev,
         { role: "bot", text: intentReply("") },
