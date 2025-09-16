@@ -782,13 +782,14 @@ h1, h2 {
 
 /* Certifications grid (premium) */
 .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-.cert-card { position: relative; display: flex; align-items: center; gap: 14px; padding: 18px 20px; border: 1px solid var(--card-border); background: linear-gradient(180deg, rgba(99,102,241,.05), rgba(34,197,94,.05)), var(--card-bg); border-radius: 16px; box-shadow: 0 16px 40px rgba(2,6,23,.12); transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
+.cert-card { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 18px 20px; border: 1px solid var(--card-border); background: linear-gradient(180deg, rgba(99,102,241,.05), rgba(34,197,94,.05)), var(--card-bg); border-radius: 16px; box-shadow: 0 16px 40px rgba(2,6,23,.12); transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
 .cert-card::before { content: ""; position: absolute; inset: 0; border-radius: 16px; padding: 1px; background: linear-gradient(90deg, rgba(99,102,241,.6), rgba(34,197,94,.6)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
 .cert-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(2,6,23,.18); }
 .cert-icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; color: #f59e0b; background: radial-gradient(circle at 30% 30%, rgba(245,158,11,.3), rgba(245,158,11,.12) 60%, transparent); box-shadow: inset 0 0 10px rgba(245,158,11,.3); flex-shrink: 0; }
+.cert-body { flex: 1; }
 .cert-body h3 { margin: 0 0 4px; color: var(--text); font-size: 1rem; }
 .cert-body p { margin: 0; color: var(--muted); font-size: .9rem; }
-.cert-cta { margin-left: auto; color: var(--accent); display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--card-border); background: rgba(99,102,241,.08); transition: all .2s ease; position: relative; z-index: 1; }
+.cert-cta { margin-left: 12px; color: var(--accent); display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--card-border); background: rgba(99,102,241,.08); transition: all .2s ease; position: relative; z-index: 1; }
 .cert-cta:hover { color: #fff; background: var(--accent); border-color: var(--accent); }
 
 /* Media Queries */
