@@ -60,7 +60,51 @@ const Chatbot = () => {
     ],
   };
 
-  // Unified function to send message to AI
+  // Strict instructions for AI
+  const instructions = `
+    You are Aritra Dutta's portfolio assistant.
+    Always respond ONLY using the provided portfolioContext.
+    Never provide unrelated answers or general knowledge.
+    Only reply with details about Aritra's skills, projects, resume, or contact info.
+    If the question is unrelated to the portfolio, reply: "I can only answer questions related to Aritra's portfolio."
+  `;
+
+  // Frontend intent mapping for portfolio queries
+  const intentReply = (text) => {
+    const t = text.toLowerCase();
+
+    if (t.includes("resume")) {
+      return `You can download my resume here: ${portfolioContext.resume}`;
+    }
+    if (t.includes("email") || t.includes("contact")) {
+      return `You can reach me at ${portfolioContext.email}`;
+    }
+    if (t.includes("skills") || t.includes("expert")) {
+      return `Key skills: ${portfolioContext.skills.join(", ")}`;
+    }
+    if (
+      t.includes("projects") ||
+      t.includes("vietlist") ||
+      t.includes("bcuz") ||
+      t.includes("legis")
+    ) {
+      return `Highlighted projects: ${portfolioContext.projects
+        .map((p) => p.name)
+        .join(", ")}. Use the portfolio filters to explore them.`;
+    }
+    if (t.includes("aritra")) {
+      return "Aritra is the creator of this portfolio. He is a software developer building web and mobile applications.";
+    }
+    // Block any unrelated queries (like coding games or general knowledge)
+    const unrelatedKeywords = ["code", "snake", "python", "google", "ai"];
+    if (unrelatedKeywords.some((kw) => t.includes(kw))) {
+      return "I can only answer questions related to Aritra's portfolio.";
+    }
+
+    return null; // fallback to AI
+  };
+
+  // Send message
   const sendToAI = async (text) => {
     if (!text.trim()) return;
 
@@ -70,18 +114,28 @@ const Chatbot = () => {
     setError("");
 
     try {
+      // Check frontend intent first
+      const frontendReply = intentReply(text);
+      if (frontendReply) {
+        setMessages((prev) => [...prev, { role: "bot", text: frontendReply }]);
+        return;
+      }
+
+      // AI fallback
       const baseUrl = process.env.REACT_APP_API_KEY || process.env.REACT_API_KEY || "";
       const url = `${baseUrl}/api/ai`;
 
-      // Include portfolio context for accurate AI responses
       const res = await axios.post(
         url,
-        { input: text, context: portfolioContext },
+        { input: text, context: portfolioContext, instructions },
         { timeout: 15000 }
       );
 
       const aiText = res?.data?.message?.trim();
-      const finalText = aiText && aiText.length > 0 ? aiText : "Sorry, I didn't get that.";
+      const finalText =
+        aiText && aiText.length > 0
+          ? aiText
+          : "I can only answer questions related to Aritra's portfolio.";
 
       setMessages((prev) => [...prev, { role: "bot", text: finalText }]);
     } catch (err) {
@@ -93,14 +147,12 @@ const Chatbot = () => {
     }
   };
 
-  // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     await sendToAI(input);
     setInput("");
   };
 
-  // Handle suggestion click
   const handleSuggestionClick = async (suggestion) => {
     await sendToAI(suggestion);
   };
