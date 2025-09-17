@@ -34,8 +34,7 @@ const Contact = () => {
     }
 
     setErrors({});
-    const baseUrl =
-      process.env.REACT_APP_API_KEY || process.env.REACT_API_KEY || '';
+    const baseUrl = process.env.REACT_APP_API_KEY || process.env.REACT_API_KEY || '';
     const url = `${baseUrl}/api/contact`;
 
     try {

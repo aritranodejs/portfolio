@@ -10,6 +10,7 @@ const Chatbot = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const endRef = useRef(null);
+
   const suggestions = [
     "Show Node.js projects",
     "What skills are you expert in?",
@@ -21,93 +22,87 @@ const Chatbot = () => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, open]);
 
-  const intentReply = (text) => {
-    const t = text.toLowerCase();
-    if (t.includes("resume") || t.includes("cv")) {
-      return "You can download my resume here: https://drive.google.com/file/d/1o4wwzH2u3RsfqXXSAGNqiKbX782OHhS6";
-    }
-    if (t.includes("contact") || t.includes("email") || t.includes("reach")) {
-      return "You can reach me at aritra.nodejsdeveloper@gmail.com or via the Contact section.";
-    }
-    if (t.includes("skills") || t.includes("tech") || t.includes("stack")) {
-      return "Key skills: JavaScript, Node.js, Express.js, REST APIs, Socket.IO, Microservices, MySQL, PostgreSQL, MongoDB, Prisma, Sequelize, Mongoose, AWS (EC2/RDS/S3/SQS), CI/CD, Redis, Git/GitHub, HTML/CSS/Bootstrap.";
-    }
-    if (t.includes("projects") || t.includes("work")) {
-      return "Highlighted projects: BCUZ (crowdfunding), VRAS (VR app system), Legis Music, Floyd's Lanes, Stub Avenue, 1st Choice Formation. Use the filters in the portfolio to explore.";
-    }
-    if (t.includes("vietlist")) {
-      return "Vietlist: Multi‑role directory/listing platform with microservices and Stripe payments, real‑time messaging, on AWS with Redis + Prisma.";
-    }
-    if (t.includes("node") || t.includes("express")) {
-      return "I build scalable Node.js/Express APIs with RBAC, caching, queues, and SQL/NoSQL backends.";
-    }
-    return "Thanks! I'll get back to you soon. You can also email aritra.nodejsdeveloper@gmail.com.";
+  // Portfolio context
+  const portfolioContext = {
+    name: "Aritra Dutta",
+    email: "aritra.nodejsdeveloper@gmail.com",
+    resume: "https://drive.google.com/file/d/1o4wwzH2u3RsfqXXSAGNqiKbX782OHhS6",
+    skills: [
+      "JavaScript",
+      "Node.js",
+      "Express.js",
+      "REST APIs",
+      "Socket.IO",
+      "Microservices",
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "Prisma",
+      "Sequelize",
+      "Mongoose",
+      "AWS (EC2/RDS/S3/SQS)",
+      "CI/CD",
+      "Redis",
+      "Git/GitHub",
+      "HTML/CSS/Bootstrap",
+    ],
+    projects: [
+      { name: "BCUZ", desc: "Crowdfunding platform" },
+      { name: "VRAS", desc: "VR app system" },
+      { name: "Legis Music", desc: "Music platform" },
+      { name: "Floyd's Lanes", desc: "Entertainment platform" },
+      { name: "Stub Avenue", desc: "Social platform" },
+      { name: "1st Choice Formation", desc: "Business tool" },
+      {
+        name: "Vietlist",
+        desc: "Multi-role directory/listing platform with Stripe payments, real-time messaging, AWS, Redis + Prisma",
+      },
+    ],
   };
 
-  const sendMessage = async (e) => {
-    e?.preventDefault();
-    if (!input.trim()) return;
-    const userMsg = { role: "user", text: input.trim() };
+  // Unified function to send message to AI
+  const sendToAI = async (text) => {
+    if (!text.trim()) return;
+
+    const userMsg = { role: "user", text: text.trim() };
     setMessages((prev) => [...prev, userMsg]);
-    setInput("");
     setLoading(true);
     setError("");
+
     try {
-      // Build short history to keep replies contextual
-      const history = messages
-        .filter((m) => m.role === "user" || m.role === "bot")
-        .slice(-6)
-        .map((m) => ({ role: m.role === "bot" ? "assistant" : "user", content: m.text }));
+      const baseUrl = process.env.REACT_APP_API_KEY || process.env.REACT_API_KEY || "";
+      const url = `${baseUrl}/api/ai`;
 
-      // Try GROQ API first
-      const payload = {
-        model: "llama3-8b-8192",
-        messages: [
-          { role: "system", content: "You are Aritra's helpful portfolio assistant. Keep answers concise and friendly." },
-          ...history,
-          { role: "user", content: userMsg.text },
-        ],
-        temperature: 0.7,
-        max_tokens: 300,
-      };
-
-      const apiKey = process.env.REACT_APP_GROQ_API_KEY || process.env.GROQ_API_KEY;
-      if (!apiKey) {
-        throw new Error("Missing GROQ API key");
-      }
-
-      const aiResponse = await axios.post(
-        "https://api.groq.com/openai/v1/chat/completions",
-        payload,
-        {
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-            "Content-Type": "application/json",
-          },
-          timeout: 15000,
-        }
+      // Include portfolio context for accurate AI responses
+      const res = await axios.post(
+        url,
+        { input: text, context: portfolioContext },
+        { timeout: 15000 }
       );
 
-      const aiText = aiResponse?.data?.choices?.[0]?.message?.content?.trim();
-      const finalText = aiText && aiText.length > 0 ? aiText : intentReply(userMsg.text);
-      const reply = { role: "bot", text: finalText };
-      setMessages((prev) => [...prev, reply]);
+      const aiText = res?.data?.message?.trim();
+      const finalText = aiText && aiText.length > 0 ? aiText : "Sorry, I didn't get that.";
+
+      setMessages((prev) => [...prev, { role: "bot", text: finalText }]);
     } catch (err) {
-      const apiErr = err?.response?.data?.error?.message || err?.message || "Unknown error";
-      // Show actionable error so we can diagnose missing key/CORS
+      const apiErr = err?.response?.data?.error || err?.message || "Unknown error";
       setError(`AI error: ${apiErr}`);
-      setMessages((prev) => [
-        ...prev,
-        { role: "bot", text: intentReply("") },
-      ]);
+      setMessages((prev) => [...prev, { role: "bot", text: "Sorry, something went wrong." }]);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleSuggestionClick = async (s) => {
-    setInput(s);
-    await sendMessage({ preventDefault: () => {} });
+  // Handle form submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await sendToAI(input);
+    setInput("");
+  };
+
+  // Handle suggestion click
+  const handleSuggestionClick = async (suggestion) => {
+    await sendToAI(suggestion);
   };
 
   return (
@@ -119,6 +114,7 @@ const Chatbot = () => {
       >
         {open ? "×" : "💬"}
       </button>
+
       {open && (
         <div className="chatbot-panel" role="dialog" aria-label="Chatbot">
           <div className="chatbot-header">
@@ -126,8 +122,15 @@ const Chatbot = () => {
               <strong>Assistant</strong>
               <div className="chatbot-sub">Ask about projects, skills, resume</div>
             </div>
-            <button className="chatbot-close" onClick={() => setOpen(false)} aria-label="Close">×</button>
+            <button
+              className="chatbot-close"
+              onClick={() => setOpen(false)}
+              aria-label="Close"
+            >
+              ×
+            </button>
           </div>
+
           <div className="chatbot-body">
             {error && <div className="chatbot-error">{error}</div>}
             {messages.map((m, i) => (
@@ -138,19 +141,25 @@ const Chatbot = () => {
             {loading && <div className="chatbot-msg bot">Thinking…</div>}
             <div ref={endRef} />
           </div>
+
           <div className="chatbot-suggestions">
             {suggestions.map((s) => (
-              <button key={s} onClick={() => handleSuggestionClick(s)}>{s}</button>
+              <button key={s} onClick={() => handleSuggestionClick(s)}>
+                {s}
+              </button>
             ))}
           </div>
-          <form className="chatbot-input" onSubmit={sendMessage}>
+
+          <form className="chatbot-input" onSubmit={handleSubmit}>
             <input
               type="text"
               value={input}
               placeholder="Type a message..."
               onChange={(e) => setInput(e.target.value)}
             />
-            <button type="submit" disabled={loading}>{loading ? "..." : "Send"}</button>
+            <button type="submit" disabled={loading}>
+              {loading ? "..." : "Send"}
+            </button>
           </form>
         </div>
       )}
@@ -159,5 +168,3 @@ const Chatbot = () => {
 };
 
 export default Chatbot;
-
-
