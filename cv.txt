@@ -1,0 +1,187 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[left=0.7in, right=0.7in, top=0.7in, bottom=0.7in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{fontawesome5} % For icons
+
+% Set colors
+\definecolor{darkblue}{RGB}{0, 51, 102}
+\definecolor{lightgray}{gray}{0.9} % Define a subtle light gray color for better readability
+
+% Define section formatting (Left-aligned)
+\titleformat{\section}{\large\bfseries\color{darkblue}\raggedright}{}{0em}{} 
+\titleformat{\subsection}[runin]{\bfseries\color{darkblue}\raggedright}{}{0em}{} 
+
+% Command to create section with icon and underline, all left-aligned
+\newcommand{\iconsection}[2]{
+    \raggedright % Ensures everything in the section is left-aligned
+    \noindent{\large\color{darkblue}#1 \textbf{#2}} \\ % Section Title with Icon
+    \noindent\rule{\textwidth}{0.5pt} % Underline
+    \vspace{1mm}
+}
+
+\begin{document}
+
+% Header (Still Centered for the Name only)
+\begin{center}
+    \textbf{\huge Aritra Dutta}
+\end{center}
+
+\vspace{2mm}
+
+% Contact Information with Icons (Ensure Contact Info is Left-Aligned)
+\noindent
+\faEnvelope \ \href{mailto:aritra.nodejsdeveloper@gmail.com}{aritra.nodejsdeveloper@gmail.com} \hfill
+\faPhone \ +91 8420222247 \hfill
+\faLinkedin \ \href{https://linkedin.com/in/aritra-dutta-2a3a8322b}{linkedin.com/in/aritra-dutta-2a3a8322b}
+
+\noindent\centering
+\faGithub \ \href{https://github.com/aritranodejs}{github.com/aritranodejs}
+
+\vspace{2mm}
+
+% ================== Technical Skills ======================
+\iconsection{\faLaptopCode}{Technical Skills}
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item \textbf{Programming Languages:} JavaScript, Java, SQL
+    \item \textbf{Backend Technologies:} Node.js, Express.js, Laravel, REST APIs, Socket.IO, \textbf{Microservices Architecture}
+    \item \textbf{Frontend Technologies:} HTML, CSS, Bootstrap, JavaScript, JQuery, AJAX
+    \item \textbf{Database Management Systems:} MySQL, PostgreSQL, MongoDB
+    \item \textbf{ORM/ODM Tools:} Prisma, Sequelize, Mongoose
+    \item \textbf{Cloud \& DevOps:} AWS EC2, RDS, S3, SQS, CI/CD
+    \item \textbf{Caching:} Redis
+    \item \textbf{Version Control \& Collaboration:} Git, GitHub
+\end{itemize}
+\vspace{2mm}
+
+% ================== Professional Experience ======================
+\iconsection{\faBriefcase}{Professional Experience} % Section with icon and title
+
+\subsection*{Digital Aptech Pvt. Ltd. | Software Engineer | Kolkata,WB}
+\hfill {June 2023 – Present} 
+
+\subsection*{Vietlist}
+\textit{Technologies:} Node.js, Express.js, PostgreSQL, Next.js, React.js
+
+\begin{itemize}[leftmargin=*,noitemsep]
+  \item Built a multi‑role directory and listing platform (users, business users, agents, admins) to simplify discovery and management of Vietnamese-owned businesses worldwide.
+  \item Implemented microservices-backed workflows and Stripe payments for subscriptions and one‑time transactions, improving flexibility and operational efficiency.
+  \item Enabled real‑time messaging and notifications, boosting user engagement and support responsiveness.
+  \item Established a scalable, secure infrastructure with AWS, Redis caching, and Prisma-synced schemas—preparing for rapid growth and robust performance.
+\end{itemize}
+
+\subsection*{Legis Music}
+\textit{Technologies:} Node.js, Express.js, MySQL, Next.js
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item Developed and maintained a royalty-free music distribution platform catering to content creators, filmmakers, and businesses.
+    \item Built a scalable backend system enabling efficient search, licensing, and streaming of copyright-safe audio tracks.
+    \item Contributed to enhancing user accessibility with a simple licensing model and intuitive user interface using Next.js.
+    \item Collaborated with a close-knit team to align the platform with creator-first principles and community feedback.
+\end{itemize}
+
+\subsection*{1st Choice Formation} 
+\textit{Technologies:} Node.js, Express.js, MongoDB, React.js
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item Designed and developed a secure file management platform with three distinct user roles: Super Admin, Employee, and Client.
+    \item Implemented file upload, management, and access control features for Super Admin and Employee roles, ensuring efficient collaboration.
+    \item Enabled role-based permission system where Clients can only view files assigned to them.
+    \item Built scalable backend services with Node.js and Express.js, and developed an intuitive React-based frontend for enhanced usability.
+\end{itemize}
+
+\subsection*{Crowdfunding Platform (Bcuz)}
+\textit{Technologies:} Node.js, Express.js, MySQL, Next.js
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item Designed and built a scalable platform for campaign management.
+    \item Increased user engagement by 50\%.
+    \item Reduced system latency by 25\% by optimizing backend queries.
+\end{itemize}
+
+\subsection*{Virtual Reality Application System (VRAS)}
+\textit{Technologies:} Node.js, Express.js, MySQL, React.js
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item Developed a web browser API and backend services for the Virtual Reality Application System (VRAS), integrating the platform with a MySQL database to enable secure data handling.
+    \item Implemented role-based access control, allowing security personnel to log in and view assigned scenarios based on their roles.
+    \item Optimized the API to handle secure user authentication, ensuring sensitive platform functionalities were restricted to authorized users, improving overall system security and reliability.
+\end{itemize}
+
+\subsection*{Shuttle Booking System (Floyd's Lanes)}
+\textit{Technologies:} Laravel, MySQL, JavaScript, AJAX
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item Developed a user-friendly platform for shuttle bookings, designed for both Admin and Customer roles.
+    \item Implemented features allowing customers to book shuttles for specific dates and events, with options to choose from various car categories.
+    \item Built an intuitive interface for admins to manage bookings, track schedules, and maintain vehicle availability.
+\end{itemize}
+
+\subsection*{Event Ticketing Platform (Stub Avenue)}
+\textit{Technologies:} Node.js, Express.js, MySQL, React.js
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item Developed a ticketing platform that processed over 1,000 ticket sales in the first month.
+    \item Integrated secure payment gateways and designed a management dashboard.
+    \item Improved API response times by 20\% through optimized database queries.
+\end{itemize}
+
+\vspace{4mm}
+
+% ================== Education ======================
+\iconsection{\faGraduationCap}{Education} % Section with icon and title
+\noindent
+\textbf{Master of Computer Applications (MCA)} \hfill 2021 – 2023 \\
+\textit{Calcutta Institute of Technology, MAKAUT} \\
+CGPA: 8.96/10
+
+% College Projects for MCA
+\textbf{Project Work:}
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item \textbf{Advanced Department Management System:} Developed a web application using Java and MySQL for managing Departments(ADMS).
+    \item \textbf{Notepad:} Developed a desktop application using Java.
+\end{itemize}
+
+\vspace{1em}
+
+\noindent
+\textbf{Bachelor of Science (B.Sc.) in Computer Science} \hfill 2018 – 2021 \\
+\textit{New Alipore College, University of Calcutta} \\
+CGPA: 7.46/10
+
+% College Projects for B.Sc.
+\textbf{Project Work:}
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item \textbf{Covi Plus:} Developed a web application using Java and MySQL that allowed users to search for available hospital beds and book them in real-time. The platform enabled hospitals to update bed availability while providing users with essential resources and booking confirmations during the COVID-19 pandemic.
+\end{itemize}
+
+\vspace{4mm}
+
+% ================== Certifications ======================
+\iconsection{\faCertificate}{Certifications} % Section with icon and title
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item \textbf{Certification in Java}
+    \item \textbf{Certification in Web Development Bootcamp}
+    \item \textbf{Certification in MERN Stack}
+\end{itemize}
+
+\vspace{4mm}
+
+% ================== Languages Known ======================
+\iconsection{\faGlobe}{Languages Known} % Section with icon and title
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item \textbf{English:} Fluent
+    \item \textbf{Bengali:} Fluent
+    \item \textbf{Hindi:} Fluent
+\end{itemize}
+
+\vspace{4mm}
+
+% ================== Hobbies ======================
+\iconsection{\faChess}{Hobbies} % Section with icon and title
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item Researching strategies to optimize project performance and efficiency
+    \item Reading technology blogs
+    \item Self Improvement
+    \item Listening to music
+\end{itemize}
+
+\end{document}
