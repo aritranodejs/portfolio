@@ -748,7 +748,15 @@ h1, h2 {
 .chatbot-close { background: transparent; border: none; color: var(--text); font-size: 20px; cursor: pointer; }
 .chatbot-body { padding: 12px; overflow: auto; display: flex; flex-direction: column; gap: 8px; }
 .chatbot-error { background: rgba(239,68,68,.15); color: #ef4444; border: 1px solid rgba(239,68,68,.25); padding: 8px 10px; border-radius: 8px; font-size: 13px; }
-.chatbot-msg { padding: 10px 12px; border-radius: 12px; max-width: 80%; }
+.chatbot-msg { 
+  padding: 10px 12px; 
+  border-radius: 12px; 
+  max-width: 80%; 
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
 .chatbot-msg.user { align-self: flex-end; background: rgba(79,70,229,.15); color: var(--text); }
 .chatbot-msg.bot { align-self: flex-start; background: rgba(148,163,184,.15); color: var(--text); }
 .chatbot-suggestions { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 10px 6px; }

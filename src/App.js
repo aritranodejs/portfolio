@@ -12,6 +12,7 @@ import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import Certifications from './components/Certifications';
 import Chatbot from './components/Chatbot';
+import Footer from './components/Footer';
 import './App.css';
 
 const App = () => {
@@ -33,9 +34,7 @@ const App = () => {
             <Portfolio />
             <Contact />
             <Chatbot />
-            <footer className="footer">
-                <p>&copy; 2024 Aritra Dutta. All rights reserved.</p>
-            </footer>
+            <Footer />
         </div>
     );
 };

@@ -4,7 +4,7 @@ import axios from "axios";
 const Chatbot = () => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: "bot", text: "Hi! I'm Aritra's assistant. How can I help?" },
+    { role: "bot", text: "Hi! I'm Aritra's assistant. Ask about projects, skills, resume. How can I help?" },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -104,6 +104,12 @@ const Chatbot = () => {
     return null; // fallback to AI
   };
 
+  // Truncate long messages to prevent UI breaking
+  const truncateMessage = (text, maxLength = 500) => {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength) + "...";
+  };
+
   // Send message
   const sendToAI = async (text) => {
     if (!text.trim()) return;
@@ -117,7 +123,9 @@ const Chatbot = () => {
       // Check frontend intent first
       const frontendReply = intentReply(text);
       if (frontendReply) {
-        setMessages((prev) => [...prev, { role: "bot", text: frontendReply }]);
+        const truncatedReply = truncateMessage(frontendReply);
+        setMessages((prev) => [...prev, { role: "bot", text: truncatedReply }]);
+        setLoading(false);
         return;
       }
 
@@ -132,10 +140,9 @@ const Chatbot = () => {
       );
 
       const aiText = res?.data?.message?.trim();
-      const finalText =
-        aiText && aiText.length > 0
-          ? aiText
-          : "I can only answer questions related to Aritra's portfolio.";
+      const finalText = aiText && aiText.length > 0
+        ? truncateMessage(aiText)
+        : "I can only answer questions related to Aritra's portfolio.";
 
       setMessages((prev) => [...prev, { role: "bot", text: finalText }]);
     } catch (err) {
