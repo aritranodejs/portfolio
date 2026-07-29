@@ -3,36 +3,14 @@ import { motion } from 'framer-motion';
 import HeroBackground from './HeroBackground';
 import MagneticButton from './MagneticButton';
 
-const letterVariants = {
-  hidden: { opacity: 0, y: 80, rotateX: -90 },
-  visible: (i) => ({
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    rotateX: 0,
-    transition: {
-      delay: 0.5 + i * 0.035,
-      duration: 0.8,
-      ease: [0.22, 1, 0.36, 1],
-    },
+    transition: { delay, duration: 0.65, ease: [0.22, 1, 0.36, 1] },
   }),
 };
-
-const AnimatedText = ({ text, startIndex = 0, className = '' }) => (
-  <span className={className} style={{ display: 'inline-block', perspective: '600px' }}>
-    {text.split('').map((char, i) => (
-      <motion.span
-        key={`${startIndex + i}-${char}`}
-        custom={startIndex + i}
-        variants={letterVariants}
-        initial="hidden"
-        animate="visible"
-        style={{ display: 'inline-block', whiteSpace: char === ' ' ? 'pre' : 'normal' }}
-      >
-        {char}
-      </motion.span>
-    ))}
-  </span>
-);
 
 const Hero = () => {
   return (
@@ -42,33 +20,42 @@ const Hero = () => {
       <div className="hero-inner">
         <motion.div
           className="hero-badge"
-          initial={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
-          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-          transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0.15}
         >
           <span className="pulse-dot" />
           Available for work
         </motion.div>
 
-        <h1 className="hero-title">
-          <AnimatedText text="Hello, I'm " startIndex={0} />
-          <AnimatedText text="Aritra Dutta" startIndex={11} className="hero-word--accent" />
-        </h1>
+        <motion.h1
+          className="hero-title"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0.3}
+        >
+          Hello, I&apos;m{' '}
+          <span className="hero-word--accent">Aritra Dutta</span>
+        </motion.h1>
 
         <motion.p
           className="hero-subtitle"
-          initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0.45}
         >
-          Software Engineer — building fast, secure & delightful products with the MERN stack
+          Node.js Engineer crafting scalable backends, microservices &amp; polished web experiences
         </motion.p>
 
         <motion.div
-          className="hero-stats"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.7 }}
+          className="hero-stats-glass"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0.55}
         >
           <div className="hero-stat">
             <span className="hero-stat-num">3+</span>
@@ -88,9 +75,10 @@ const Hero = () => {
 
         <motion.div
           className="hero-actions"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.7, duration: 0.6 }}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0.65}
         >
           <MagneticButton>
             <a
@@ -111,10 +99,28 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
+          className="hero-social"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0.75}
+        >
+          <a href="https://github.com/aritranodejs" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i className="fab fa-github" />
+          </a>
+          <a href="https://www.linkedin.com/in/aritra-dutta-2a3a8322b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i className="fab fa-linkedin-in" />
+          </a>
+          <a href="mailto:aritra.nodejsdeveloper@gmail.com" aria-label="Email">
+            <i className="fas fa-envelope" />
+          </a>
+        </motion.div>
+
+        <motion.div
           className="hero-scroll-hint"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.2 }}
+          transition={{ delay: 1, duration: 0.5 }}
         >
           <span>scroll</span>
           <div className="scroll-line" />

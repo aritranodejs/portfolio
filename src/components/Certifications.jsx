@@ -19,8 +19,11 @@ const Certifications = () => {
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6 }}
       >
-        <span className="section-number">—</span>
-        <h2 className="section-title">Certifications</h2>
+        <div className="section-header-row">
+          <span className="section-number">05</span>
+          <h2 className="section-title">Certifications</h2>
+        </div>
+        <p className="section-subtitle">Professional credentials in Java, web development, and the MERN stack.</p>
       </motion.div>
 
       <div className="cert-grid">

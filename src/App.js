@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import SmoothScroll from './components/SmoothScroll';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -15,7 +14,9 @@ import Certifications from './components/Certifications';
 import Chatbot from './components/Chatbot';
 import Footer from './components/Footer';
 import Cursor from './components/Cursor';
+import ScrollProgress from './components/ScrollProgress';
 import './App.css';
+import './assets/css/premium.css';
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -40,6 +41,7 @@ const App = () => {
   return (
     <>
       <Cursor />
+      <ScrollProgress />
       <ToastContainer theme={isDarkMode ? 'dark' : 'light'} />
       <Navbar />
       <button
@@ -49,20 +51,18 @@ const App = () => {
       >
         <i className={isDarkMode ? 'fas fa-sun' : 'fas fa-moon'} />
       </button>
-      <SmoothScroll>
-        <div className="app">
-          <Hero />
-          <About />
-          <Experience />
-          <Education />
-          <Skills />
-          <Certifications />
-          <Portfolio />
-          <Contact />
-          <Chatbot />
-          <Footer />
-        </div>
-      </SmoothScroll>
+      <div className="app">
+        <Hero />
+        <About />
+        <Experience />
+        <Education />
+        <Skills />
+        <Certifications />
+        <Portfolio />
+        <Contact />
+        <Footer />
+      </div>
+      <Chatbot />
     </>
   );
 };

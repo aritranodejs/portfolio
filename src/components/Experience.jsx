@@ -26,8 +26,11 @@ const Experience = () => {
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6 }}
       >
-        <span className="section-number">02</span>
-        <h2 className="section-title">Experience</h2>
+        <div className="section-header-row">
+          <span className="section-number">02</span>
+          <h2 className="section-title">Experience</h2>
+        </div>
+        <p className="section-subtitle">3+ years shipping production systems for global clients.</p>
       </motion.div>
 
       <div className="exp-list">

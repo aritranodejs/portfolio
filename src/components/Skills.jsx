@@ -69,8 +69,11 @@ const Skills = () => {
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6 }}
       >
-        <span className="section-number">04</span>
-        <h2 className="section-title">Skills</h2>
+        <div className="section-header-row">
+          <span className="section-number">04</span>
+          <h2 className="section-title">Skills</h2>
+        </div>
+        <p className="section-subtitle">Technologies I use to build fast, reliable, and scalable products.</p>
       </motion.div>
 
       {groups.map((group, gIdx) => (
