@@ -1,88 +1,134 @@
-import React from "react";
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const groups = [
   {
-    title: "Languages",
+    title: 'Languages',
     items: [
-      { name: "JavaScript", percent: 85, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-      { name: "SQL", percent: 80, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-      { name: "Java", percent: 70, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" }
-    ]
+      { name: 'JavaScript', percent: 85, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+      { name: 'SQL', percent: 80, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+      { name: 'Java', percent: 70, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+    ],
   },
   {
-    title: "Backend",
+    title: 'Backend',
     items: [
-      { name: "Node.js", percent: 85, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-      { name: "Express.js", percent: 80, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
-      { name: "REST APIs", percent: 85, logo: "https://cdn-icons-png.flaticon.com/512/1336/1336494.png" },
-      { name: "Socket.IO", percent: 75, logo: "https://cdn.worldvectorlogo.com/logos/socket-io.svg" },
-      { name: "Microservices", percent: 70, logo: "https://cdn-icons-png.flaticon.com/512/1126/1126784.png" }
-    ]
+      { name: 'Node.js', percent: 85, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+      { name: 'Express.js', percent: 80, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+      { name: 'REST APIs', percent: 85, logo: 'https://cdn-icons-png.flaticon.com/512/1336/1336494.png' },
+      { name: 'Socket.IO', percent: 75, logo: 'https://cdn.worldvectorlogo.com/logos/socket-io.svg' },
+      { name: 'Microservices', percent: 70, logo: 'https://cdn-icons-png.flaticon.com/512/1126/1126784.png' },
+    ],
   },
   {
-    title: "Databases",
+    title: 'Databases',
     items: [
-      { name: "MySQL", percent: 85, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-      { name: "PostgreSQL", percent: 80, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-      { name: "MongoDB", percent: 70, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" }
-    ]
+      { name: 'MySQL', percent: 85, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+      { name: 'PostgreSQL', percent: 80, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+      { name: 'MongoDB', percent: 70, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+    ],
   },
   {
-    title: "ORM / ODM",
+    title: 'ORM / ODM',
     items: [
-      { name: "Prisma", percent: 80, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg" },
-      { name: "Sequelize", percent: 80, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg" },
-      { name: "Mongoose", percent: 70, logo: "https://seeklogo.com/images/M/mongoose-logo-62666D6B82-seeklogo.com.png" }
-    ]
+      { name: 'Prisma', percent: 80, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg' },
+      { name: 'Sequelize', percent: 80, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg' },
+      { name: 'Mongoose', percent: 70, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongoose/mongoose-original.svg' },
+    ],
   },
   {
-    title: "Cloud & DevOps",
+    title: 'Cloud & DevOps',
     items: [
-      { name: "AWS EC2/RDS/S3/SQS", percent: 60, logo: "https://www.logo.wine/a/logo/Amazon_Web_Services/Amazon_Web_Services-Logo.wine.svg" },
-      { name: "CI/CD", percent: 70, logo: "https://cdn.simpleicons.org/githubactions/2088FF" },
-      { name: "Git/GitHub", percent: 85, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-    ]
+      { name: 'AWS EC2/RDS/S3/SQS', percent: 60, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' },
+      { name: 'CI/CD', percent: 70, logo: 'https://cdn.simpleicons.org/githubactions/2088FF' },
+      { name: 'Git/GitHub', percent: 85, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+    ],
   },
   {
-    title: "Frontend",
+    title: 'Frontend',
     items: [
-      { name: "HTML/CSS/Bootstrap", percent: 60, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-      { name: "React", percent: 70, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-    ]
+      { name: 'HTML/CSS/Bootstrap', percent: 60, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+      { name: 'React', percent: 70, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+    ],
   },
   {
-    title: "Caching",
+    title: 'Caching',
     items: [
-      { name: "Redis", percent: 70, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" }
-    ]
-  }
+      { name: 'Redis', percent: 70, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
+    ],
+  },
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="skills" data-aos="fade-left">
-      <h2 data-aos="fade-left">My Skills</h2>
+    <section id="skills" className="skills section">
+      <motion.div
+        className="section-header"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="section-number">04</span>
+        <h2 className="section-title">Skills</h2>
+      </motion.div>
+
       {groups.map((group, gIdx) => (
-        <div className="skills-group" key={group.title} data-aos="fade-up" data-aos-delay={gIdx * 50}>
-          <div className="skills-title">{group.title}</div>
-          <div className="skills-tree">
-          <div className="skills-container">
+        <div className="skills-group" key={group.title}>
+          <motion.h3
+            className="skills-category"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: gIdx * 0.05, duration: 0.5 }}
+          >
+            {group.title}
+          </motion.h3>
+          <div className="skills-grid">
             {group.items.map((s, idx) => (
-              <div className="skill" data-aos="zoom-in" data-aos-delay={(idx % 5) * 100} key={s.name}>
-                <div className="skill-content">
-                  <img src={s.logo} alt={`${s.name} Logo`} className="skill-logo" loading="lazy" onError={(e)=>{e.currentTarget.style.display='none'; e.currentTarget.nextSibling?.classList.add('no-logo');}} />
-                  <div className="skill-details">
-                    <h3>{s.name}</h3>
-                    <div className="progress-bar" aria-label={`${s.name} proficiency`} role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={s.percent}>
-                      <div className="progress" style={{ width: `${s.percent}%` }}></div>
-                    </div>
-                    <p className="skill-percentage">{s.percent}%</p>
+              <motion.div
+                className="skill"
+                key={s.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              >
+                <img
+                  src={s.logo}
+                  alt={`${s.name} logo`}
+                  className="skill-logo"
+                  loading="lazy"
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
+                <div className="skill-details">
+                  <div className="skill-header">
+                    <h4>{s.name}</h4>
+                    <span className="skill-badge">
+                      {s.percent >= 80 ? 'Advanced' : s.percent >= 70 ? 'Proficient' : 'Working'}
+                    </span>
                   </div>
-                  <span className="badge">{s.percent >= 80 ? 'Advanced' : s.percent >= 70 ? 'Proficient' : 'Working'}</span>
+                  <div
+                    className="progress-bar"
+                    role="progressbar"
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-valuenow={s.percent}
+                    aria-label={`${s.name} proficiency`}
+                  >
+                    <motion.div
+                      className="progress"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${s.percent}%` }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 + idx * 0.06, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    />
+                  </div>
+                  <span className="skill-percent">{s.percent}%</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
           </div>
         </div>
       ))}
