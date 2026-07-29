@@ -1,68 +1,55 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const Cursor = () => {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [ring, setRing] = useState({ x: 0, y: 0 });
-  const [hovering, setHovering] = useState(false);
-  const [isTouch, setIsTouch] = useState(false);
+  const dotRef = useRef(null);
+  const ringRef = useRef(null);
+  const pos = useRef({ x: 0, y: 0 });
+  const ring = useRef({ x: 0, y: 0 });
+  const rafId = useRef(null);
 
   useEffect(() => {
-    setIsTouch(window.matchMedia('(pointer: coarse)').matches);
-  }, []);
+    if (window.matchMedia('(pointer: coarse)').matches) return undefined;
 
-  useEffect(() => {
+    const dot = dotRef.current;
+    const ringEl = ringRef.current;
+    if (!dot || !ringEl) return undefined;
+
     const onMove = (e) => {
-      setPos({ x: e.clientX, y: e.clientY });
+      pos.current.x = e.clientX;
+      pos.current.y = e.clientY;
+      dot.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
     };
-    window.addEventListener('mousemove', onMove);
 
-    const tick = () => {
-      setRing((r) => ({
-        x: r.x + (pos.x - r.x) * 0.12,
-        y: r.y + (pos.y - r.y) * 0.12,
-      }));
+    const animate = () => {
+      ring.current.x += (pos.current.x - ring.current.x) * 0.15;
+      ring.current.y += (pos.current.y - ring.current.y) * 0.15;
+      ringEl.style.transform = `translate3d(${ring.current.x}px, ${ring.current.y}px, 0) translate(-50%, -50%)`;
+      rafId.current = requestAnimationFrame(animate);
     };
-    const id = setInterval(tick, 16);
 
     const onOver = (e) => {
       const t = e.target;
-      if (
-        t.closest('a, button, .skill, .portfolio-card, .cert-card, .filter-btn, .tl-card')
-      ) {
-        setHovering(true);
-      }
+      ringEl.classList.toggle(
+        'cursor-ring--hover',
+        !!t.closest('a, button, .skill, .portfolio-card, .cert-card, .filter-btn, .tl-card, .chatbot-fab, .nav-link')
+      );
     };
-    const onOut = (e) => {
-      const t = e.target;
-      if (
-        t.closest('a, button, .skill, .portfolio-card, .cert-card, .filter-btn, .tl-card')
-      ) {
-        setHovering(false);
-      }
-    };
-    document.addEventListener('mouseover', onOver);
-    document.addEventListener('mouseout', onOut);
+
+    window.addEventListener('mousemove', onMove, { passive: true });
+    document.addEventListener('mouseover', onOver, { passive: true });
+    rafId.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('mousemove', onMove);
-      clearInterval(id);
       document.removeEventListener('mouseover', onOver);
-      document.removeEventListener('mouseout', onOut);
+      cancelAnimationFrame(rafId.current);
     };
-  }, [pos.x, pos.y]);
-
-  if (isTouch) return null;
+  }, []);
 
   return (
     <>
-      <div
-        className="cursor-dot"
-        style={{ transform: `translate(${pos.x}px, ${pos.y}px)` }}
-      />
-      <div
-        className={`cursor-ring ${hovering ? 'cursor-ring--hover' : ''}`}
-        style={{ transform: `translate(${ring.x}px, ${ring.y}px)` }}
-      />
+      <div ref={dotRef} className="cursor-dot" />
+      <div ref={ringRef} className="cursor-ring" />
     </>
   );
 };

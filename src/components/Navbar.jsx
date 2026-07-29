@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 const links = [
   { id: 'about', label: 'About', icon: 'fa-user' },
   { id: 'experience', label: 'Experience', icon: 'fa-building' },
-  { id: 'education', label: 'Education', icon: 'fa-graduation-cap' },
   { id: 'skills', label: 'Skills', icon: 'fa-tools' },
   { id: 'portfolio', label: 'Work', icon: 'fa-briefcase' },
   { id: 'contact', label: 'Contact', icon: 'fa-envelope' },
@@ -16,7 +15,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const sectionIds = links.map((l) => l.id);
+    const sectionIds = ['about', 'experience', 'education', 'skills', 'certifications', 'portfolio', 'contact'];
     const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
     const observer = new IntersectionObserver(
       (entries) => {
@@ -24,7 +23,7 @@ const Navbar = () => {
           if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
-      { threshold: 0.45 }
+      { threshold: 0.4 }
     );
     sections.forEach((sec) => observer.observe(sec));
     return () => observer.disconnect();
@@ -43,11 +42,12 @@ const Navbar = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
-      <a href="#" className="site-nav-logo" aria-label="Home">
+      <a href="#about" className="site-nav-logo" aria-label="Go to about section">
         <span className="logo-bracket">[</span>AD<span className="logo-bracket">]</span>
       </a>
 
       <button
+        type="button"
         className="menu-toggle"
         aria-label="Toggle menu"
         onClick={() => setIsMenuOpen((v) => !v)}
@@ -68,6 +68,16 @@ const Navbar = () => {
             </a>
           </li>
         ))}
+        <li>
+          <a
+            className="nav-link nav-cta"
+            href="#contact"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <i className="fas fa-paper-plane" />
+            Hire Me
+          </a>
+        </li>
       </ul>
     </motion.nav>
   );

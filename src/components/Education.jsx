@@ -24,8 +24,11 @@ const Education = () => {
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6 }}
       >
-        <span className="section-number">03</span>
-        <h2 className="section-title">Education</h2>
+        <div className="section-header-row">
+          <span className="section-number">03</span>
+          <h2 className="section-title">Education</h2>
+        </div>
+        <p className="section-subtitle">Strong foundation in computer science and software engineering.</p>
       </motion.div>
 
       <div className="timeline">

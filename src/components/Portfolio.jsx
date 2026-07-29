@@ -135,8 +135,11 @@ const Portfolio = () => {
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6 }}
       >
-        <span className="section-number">05</span>
-        <h2 className="section-title">Selected Work</h2>
+        <div className="section-header-row">
+          <span className="section-number">06</span>
+          <h2 className="section-title">Selected Work</h2>
+        </div>
+        <p className="section-subtitle">Production apps, platforms, and products I&apos;ve helped build.</p>
       </motion.div>
 
       <div className="portfolio-filter" role="tablist" aria-label="Project filters">
@@ -162,8 +165,7 @@ const Portfolio = () => {
             <motion.div
               className="portfolio-item"
               key={project.title}
-              layout
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}

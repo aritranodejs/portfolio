@@ -3,6 +3,32 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const CONTACT_INFO = [
+  {
+    icon: 'fa-envelope',
+    label: 'Email',
+    value: 'aritra.nodejsdeveloper@gmail.com',
+    href: 'mailto:aritra.nodejsdeveloper@gmail.com',
+  },
+  {
+    icon: 'fa-phone',
+    label: 'Phone',
+    value: '+91 8420222247',
+    href: 'tel:+918420222247',
+  },
+  {
+    icon: 'fa-map-marker-alt',
+    label: 'Location',
+    value: 'Kolkata, India',
+  },
+  {
+    icon: 'fa-linkedin-in',
+    label: 'LinkedIn',
+    value: 'aritra-dutta',
+    href: 'https://www.linkedin.com/in/aritra-dutta-2a3a8322b',
+  },
+];
+
 const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -63,60 +89,91 @@ const Contact = () => {
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6 }}
       >
-        <span className="section-number">06</span>
-        <h2 className="section-title">Get In Touch</h2>
+        <div className="section-header-row">
+          <span className="section-number">07</span>
+          <h2 className="section-title">Get In Touch</h2>
+        </div>
+        <p className="section-subtitle">
+          Have a project in mind or want to collaborate? I&apos;d love to hear from you.
+        </p>
       </motion.div>
 
-      <motion.form
-        id="contact-form"
-        onSubmit={handleSubmit}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        <div className="form-group">
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Your Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          {errors.name && <div className="error">{errors.name}</div>}
-        </div>
-        <div className="form-group">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Your Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {errors.email && <div className="error">{errors.email}</div>}
-        </div>
-        <div className="form-group">
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Your Message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          {errors.message && <div className="error">{errors.message}</div>}
-        </div>
-        <motion.button
-          type="submit"
-          className="btn btn-primary"
-          disabled={isSubmitting}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+      <div className="contact-grid">
+        <motion.div
+          className="contact-sidebar"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          {isSubmitting ? 'Sending…' : 'Send Message'}
-        </motion.button>
-      </motion.form>
+          {CONTACT_INFO.map((item) => (
+            <div className="contact-card" key={item.label}>
+              <div className="contact-card-icon">
+                <i className={`fas ${item.icon}`} />
+              </div>
+              <h4>{item.label}</h4>
+              {item.href ? (
+                <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">
+                  {item.value}
+                </a>
+              ) : (
+                <p>{item.value}</p>
+              )}
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.form
+          id="contact-form"
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+        >
+          <div className="form-group">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            {errors.name && <div className="error">{errors.name}</div>}
+          </div>
+          <div className="form-group">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {errors.email && <div className="error">{errors.email}</div>}
+          </div>
+          <div className="form-group">
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your Message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            {errors.message && <div className="error">{errors.message}</div>}
+          </div>
+          <motion.button
+            type="submit"
+            className="btn btn-primary"
+            disabled={isSubmitting}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {isSubmitting ? 'Sending…' : 'Send Message'}
+          </motion.button>
+        </motion.form>
+      </div>
     </section>
   );
 };

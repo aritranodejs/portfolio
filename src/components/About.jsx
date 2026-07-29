@@ -21,8 +21,11 @@ const About = () => {
         viewport={{ once: true, margin: '-80px' }}
         variants={fadeUp}
       >
-        <span className="section-number">01</span>
-        <h2 className="section-title">About Me</h2>
+        <div className="section-header-row">
+          <span className="section-number">01</span>
+          <h2 className="section-title">About Me</h2>
+        </div>
+        <p className="section-subtitle">Building production-grade systems with clean architecture and thoughtful UX.</p>
       </motion.div>
 
       <div className="about-grid">
@@ -70,6 +73,19 @@ const About = () => {
             "Quality code is not just written; it is meticulously crafted, continuously improved,
             and thoroughly understood."
           </motion.blockquote>
+
+          <motion.div
+            className="about-chips"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            custom={4}
+          >
+            {['Node.js', 'React', 'PostgreSQL', 'AWS', 'Microservices', 'Redis'].map((chip) => (
+              <span key={chip} className="about-chip">{chip}</span>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>
