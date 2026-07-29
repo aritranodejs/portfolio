@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
@@ -10,26 +11,22 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateForm = () => {
-    const errors = {};
-    if (!name) {
-      errors.name = 'Name is required';
-    }
+    const errs = {};
+    if (!name) errs.name = 'Name is required';
     if (!email) {
-      errors.email = 'Email is required';
+      errs.email = 'Email is required';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
-      errors.email = 'Invalid email address';
+      errs.email = 'Invalid email address';
     }
-    if (!message) {
-      errors.message = 'Message is required';
-    }
-    return errors;
+    if (!message) errs.message = 'Message is required';
+    return errs;
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const errors = validateForm();
-    if (Object.keys(errors).length > 0) {
-      setErrors(errors);
+    const errs = validateForm();
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs);
       return;
     }
 
@@ -39,38 +36,18 @@ const Contact = () => {
 
     try {
       setIsSubmitting(true);
-      const response = await axios.post(url, {
-        name,
-        email,
-        message,
-      });
-
+      const response = await axios.post(url, { name, email, message });
       toast.success(
-        (response && response.data && response.data.message) ||
-        'Message sent successfully!',
-        {
-          position: 'top-center',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        }
+        (response?.data?.message) || 'Message sent successfully!',
+        { position: 'top-center', autoClose: 3000 }
       );
-
       setName('');
       setEmail('');
       setMessage('');
     } catch (error) {
       const apiMessage =
-        (error && error.response && error.response.data && error.response.data.message) ||
-        'Failed to send message. Please try again later.';
-      toast.error(apiMessage, {
-        position: 'top-center',
-        autoClose: 4000,
-      });
-      // eslint-disable-next-line no-console
+        error?.response?.data?.message || 'Failed to send message. Please try again later.';
+      toast.error(apiMessage, { position: 'top-center', autoClose: 4000 });
       console.error('Contact form submission error:', error);
     } finally {
       setIsSubmitting(false);
@@ -78,39 +55,68 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact" data-aos="fade-right">
-      <h2>Contact Me</h2>
-      <form id="contact-form" data-aos="fade-up" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Your Name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-        />
-        {errors.name && <div className="error">{errors.name}</div>}
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Your Email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        {errors.email && <div className="error">{errors.email}</div>}
-        <textarea
-          id="message"
-          name="message"
-          placeholder="Your Message"
-          value={message}
-          onChange={(event) => setMessage(event.target.value)}
-        />
-        {errors.message && <div className="error">{errors.message}</div>}
-        <button type="submit" className="btn" disabled={isSubmitting}>
-          {isSubmitting ? 'Sending...' : 'Send Message'}
-        </button>
-      </form>
+    <section id="contact" className="contact section">
+      <motion.div
+        className="section-header"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="section-number">06</span>
+        <h2 className="section-title">Get In Touch</h2>
+      </motion.div>
+
+      <motion.form
+        id="contact-form"
+        onSubmit={handleSubmit}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <div className="form-group">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          {errors.name && <div className="error">{errors.name}</div>}
+        </div>
+        <div className="form-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {errors.email && <div className="error">{errors.email}</div>}
+        </div>
+        <div className="form-group">
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Your Message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          {errors.message && <div className="error">{errors.message}</div>}
+        </div>
+        <motion.button
+          type="submit"
+          className="btn btn-primary"
+          disabled={isSubmitting}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          {isSubmitting ? 'Sending…' : 'Send Message'}
+        </motion.button>
+      </motion.form>
     </section>
   );
 };

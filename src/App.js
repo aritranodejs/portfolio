@@ -1,42 +1,70 @@
-import React, { useEffect } from 'react';
-import AOS from 'aos';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'aos/dist/aos.css';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import SmoothScroll from './components/SmoothScroll';
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
+import Experience from './components/Experience';
 import Education from './components/Education';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import Certifications from './components/Certifications';
 import Chatbot from './components/Chatbot';
 import Footer from './components/Footer';
+import Cursor from './components/Cursor';
 import './App.css';
 
 const App = () => {
-    useEffect(() => {
-        AOS.init({
-            duration: 1200,
-            once: true,
-        });
-    }, []);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
-    return (
-        <div>
-            <ToastContainer />
-            <Hero />
-            <About />
-            <Education />
-            <Skills />
-            <Certifications />
-            <Portfolio />
-            <Contact />
-            <Chatbot />
-            <Footer />
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+      const shouldDark = saved ? saved === 'dark' : prefersDark;
+      setIsDarkMode(shouldDark);
+      document.body.classList.toggle('dark-mode', shouldDark);
+    } catch (e) { /* ignore */ }
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !isDarkMode;
+    setIsDarkMode(next);
+    document.body.classList.toggle('dark-mode', next);
+    try { localStorage.setItem('theme', next ? 'dark' : 'light'); } catch (e) { /* ignore */ }
+  };
+
+  return (
+    <>
+      <Cursor />
+      <ToastContainer theme={isDarkMode ? 'dark' : 'light'} />
+      <Navbar />
+      <button
+        id="theme-toggle"
+        onClick={toggleTheme}
+        aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+      >
+        <i className={isDarkMode ? 'fas fa-sun' : 'fas fa-moon'} />
+      </button>
+      <SmoothScroll>
+        <div className="app">
+          <Hero />
+          <About />
+          <Experience />
+          <Education />
+          <Skills />
+          <Certifications />
+          <Portfolio />
+          <Contact />
+          <Chatbot />
+          <Footer />
         </div>
-    );
+      </SmoothScroll>
+    </>
+  );
 };
 
 export default App;

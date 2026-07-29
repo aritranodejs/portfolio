@@ -1,114 +1,127 @@
-import React, { useEffect, useState } from "react";
-import "aos/dist/aos.css";
+import React from 'react';
+import { motion } from 'framer-motion';
+import HeroBackground from './HeroBackground';
+import MagneticButton from './MagneticButton';
+
+const letterVariants = {
+  hidden: { opacity: 0, y: 80, rotateX: -90 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    transition: {
+      delay: 0.5 + i * 0.035,
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
+
+const AnimatedText = ({ text, startIndex = 0, className = '' }) => (
+  <span className={className} style={{ display: 'inline-block', perspective: '600px' }}>
+    {text.split('').map((char, i) => (
+      <motion.span
+        key={`${startIndex + i}-${char}`}
+        custom={startIndex + i}
+        variants={letterVariants}
+        initial="hidden"
+        animate="visible"
+        style={{ display: 'inline-block', whiteSpace: char === ' ' ? 'pre' : 'normal' }}
+      >
+        {char}
+      </motion.span>
+    ))}
+  </span>
+);
 
 const Hero = () => {
-    const [isDarkMode, setIsDarkMode] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [activeId, setActiveId] = useState("about");
+  return (
+    <header className="hero">
+      <HeroBackground />
 
-    const toggleTheme = () => {
-        const next = !isDarkMode;
-        setIsDarkMode(next);
-        document.body.classList.toggle('dark-mode', next);
-        try { localStorage.setItem('theme', next ? 'dark' : 'light'); } catch(e) {}
-    };
+      <div className="hero-inner">
+        <motion.div
+          className="hero-badge"
+          initial={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="pulse-dot" />
+          Available for work
+        </motion.div>
 
-    useEffect(() => {
-        try {
-            const saved = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const shouldDark = saved ? saved === 'dark' : prefersDark;
-            setIsDarkMode(shouldDark);
-            document.body.classList.toggle('dark-mode', shouldDark);
-        } catch(e) {}
-    }, []);
+        <h1 className="hero-title">
+          <AnimatedText text="Hello, I'm " startIndex={0} />
+          <AnimatedText text="Aritra Dutta" startIndex={11} className="hero-word--accent" />
+        </h1>
 
-    useEffect(() => {
-        const sectionIds = ["about", "education", "skills", "portfolio", "contact"];
-        const sections = sectionIds
-            .map(id => document.getElementById(id))
-            .filter(Boolean);
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setActiveId(entry.target.id);
-                }
-            });
-        }, { threshold: 0.6 });
-        sections.forEach(sec => observer.observe(sec));
-        return () => observer.disconnect();
-    }, []);
+        <motion.p
+          className="hero-subtitle"
+          initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          Software Engineer — building fast, secure & delightful products with the MERN stack
+        </motion.p>
 
-    useEffect(() => {
-        const onMove = (e) => {
-            const x = (e.clientX / window.innerWidth) * 2 - 1;
-            const y = (e.clientY / window.innerHeight) * 2 - 1;
-            document.documentElement.style.setProperty('--parallaxX', String(x));
-            document.documentElement.style.setProperty('--parallaxY', String(y));
-        };
-        window.addEventListener('mousemove', onMove);
-        return () => window.removeEventListener('mousemove', onMove);
-    }, []);
+        <motion.div
+          className="hero-stats"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 0.7 }}
+        >
+          <div className="hero-stat">
+            <span className="hero-stat-num">3+</span>
+            <span className="hero-stat-label">Years Exp</span>
+          </div>
+          <div className="hero-stat-divider" />
+          <div className="hero-stat">
+            <span className="hero-stat-num">8+</span>
+            <span className="hero-stat-label">Projects</span>
+          </div>
+          <div className="hero-stat-divider" />
+          <div className="hero-stat">
+            <span className="hero-stat-num">1</span>
+            <span className="hero-stat-label">Own Product</span>
+          </div>
+        </motion.div>
 
-    return (
-        <header className="hero" data-aos="fade-in">
-            <nav>
-                <button className="menu-toggle" aria-label="Toggle menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                    <i className="fas fa-bars"></i>
-                </button>
-                <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-                <li>
-                    <a className={`nav-link ${activeId === 'about' ? 'active' : ''}`} href="#about" onClick={()=>setIsMenuOpen(false)}>
-                    <i className="fas fa-user"></i> About
-                    </a>
-                </li>
-                <li>
-                    <a className={`nav-link ${activeId === 'education' ? 'active' : ''}`} href="#education" onClick={()=>setIsMenuOpen(false)}>
-                    <i className="fas fa-graduation-cap"></i> Education
-                    </a>
-                </li>
-                <li>
-                    <a className={`nav-link ${activeId === 'skills' ? 'active' : ''}`} href="#skills" onClick={()=>setIsMenuOpen(false)}>
-                    <i className="fas fa-tools"></i> Skills
-                    </a>
-                </li>
-                <li>
-                    <a className={`nav-link ${activeId === 'portfolio' ? 'active' : ''}`} href="#portfolio" onClick={()=>setIsMenuOpen(false)}>
-                    <i className="fas fa-briefcase"></i> Portfolio
-                    </a>
-                </li>
-                <li>
-                    <a className={`nav-link ${activeId === 'contact' ? 'active' : ''}`} href="#contact" onClick={()=>setIsMenuOpen(false)}>
-                    <i className="fas fa-envelope"></i> Contact
-                    </a>
-                </li>
-                <button id="theme-toggle" onClick={toggleTheme} aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}>
-                    <i className={isDarkMode ? "fas fa-moon" : "fas fa-sun"}></i>
-                </button>
-                </ul>
-            </nav>
-            <div className="parallax-layer layer-1" aria-hidden="true"></div>
-            <div className="parallax-layer layer-2" aria-hidden="true"></div>
-            <div className="hero-content">
-                <h1 data-aos="fade-up">Hello, I'm Aritra Dutta</h1>
-                <p data-aos="fade-up" data-aos-delay="100">
-                MERN Stack Developer
-                </p>
-                <a
-                href="https://drive.google.com/file/d/1o4wwzH2u3RsfqXXSAGNqiKbX782OHhS6"
-                download
-                className="btn"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-aos="fade-up"
-                data-aos-delay="300"
-                aria-label="Download resume as PDF"
-                >
-                <i className="fas fa-download"></i> Download Resume
-                </a>
-            </div>
-        </header>
-    );
+        <motion.div
+          className="hero-actions"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.7, duration: 0.6 }}
+        >
+          <MagneticButton>
+            <a
+              href="https://drive.google.com/file/d/1o4wwzH2u3RsfqXXSAGNqiKbX782OHhS6"
+              className="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download resume as PDF"
+            >
+              <i className="fas fa-download" /> Download Resume
+            </a>
+          </MagneticButton>
+          <MagneticButton>
+            <a href="#portfolio" className="btn btn-ghost">
+              <i className="fas fa-arrow-down" /> View Work
+            </a>
+          </MagneticButton>
+        </motion.div>
+
+        <motion.div
+          className="hero-scroll-hint"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.2 }}
+        >
+          <span>scroll</span>
+          <div className="scroll-line" />
+        </motion.div>
+      </div>
+    </header>
+  );
 };
 
 export default Hero;
