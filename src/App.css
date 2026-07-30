@@ -151,12 +151,43 @@ body:not(.dark-mode) .site-nav--scrolled {
 }
 
 .site-nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--mono);
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--text);
   text-decoration: none;
   letter-spacing: -0.5px;
+}
+
+.site-nav-logo__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 36px;
+  padding: 0 8px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  background: linear-gradient(135deg, rgba(240, 160, 48, 0.12), rgba(99, 102, 241, 0.08));
+  border: 1px solid rgba(240, 160, 48, 0.22);
+  box-shadow: 0 4px 16px rgba(240, 160, 48, 0.08);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+.site-nav-logo:hover .site-nav-logo__mark {
+  border-color: rgba(240, 160, 48, 0.45);
+  box-shadow: 0 6px 20px rgba(240, 160, 48, 0.14);
+  transform: translateY(-1px);
+}
+
+.site-nav-logo__text {
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .logo-bracket { color: var(--accent); }
@@ -283,7 +314,7 @@ body:not(.dark-mode) .site-nav--scrolled {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 120px 24px 80px;
+  padding: 120px 24px 100px;
   max-width: 900px;
 }
 
@@ -383,22 +414,25 @@ body:not(.dark-mode) .site-nav--scrolled {
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 0;
 }
 
 .hero-scroll-hint {
   position: absolute;
-  bottom: 40px;
+  bottom: 36px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 2px;
+  font-size: 0.68rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
+  pointer-events: none;
 }
 
 .scroll-line {

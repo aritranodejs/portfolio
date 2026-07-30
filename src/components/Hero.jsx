@@ -12,10 +12,39 @@ const fadeUp = {
   }),
 };
 
+const SOCIAL_LINKS = [
+  { href: 'https://github.com/aritranodejs', icon: 'fab fa-github', label: 'GitHub' },
+  { href: 'https://www.linkedin.com/in/aritra-dutta-2a3a8322b', icon: 'fab fa-linkedin-in', label: 'LinkedIn' },
+  { href: 'mailto:aritra.nodejsdeveloper@gmail.com', icon: 'fas fa-envelope', label: 'Email' },
+];
+
 const Hero = () => {
   return (
     <header className="hero">
       <HeroBackground />
+
+      <motion.aside
+        className="hero-social-rail"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.9, duration: 0.6 }}
+        aria-label="Social links"
+      >
+        <div className="hero-social">
+          {SOCIAL_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel="noopener noreferrer"
+              aria-label={link.label}
+            >
+              <i className={link.icon} />
+            </a>
+          ))}
+        </div>
+        <span className="hero-social-rail__line" aria-hidden="true" />
+      </motion.aside>
 
       <div className="hero-inner">
         <motion.div
@@ -99,33 +128,36 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          className="hero-social"
+          className="hero-social-mobile"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={0.75}
+          aria-label="Social links"
         >
-          <a href="https://github.com/aritranodejs" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <i className="fab fa-github" />
-          </a>
-          <a href="https://www.linkedin.com/in/aritra-dutta-2a3a8322b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <i className="fab fa-linkedin-in" />
-          </a>
-          <a href="mailto:aritra.nodejsdeveloper@gmail.com" aria-label="Email">
-            <i className="fas fa-envelope" />
-          </a>
-        </motion.div>
-
-        <motion.div
-          className="hero-scroll-hint"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-        >
-          <span>scroll</span>
-          <div className="scroll-line" />
+          {SOCIAL_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel="noopener noreferrer"
+              aria-label={link.label}
+            >
+              <i className={link.icon} />
+            </a>
+          ))}
         </motion.div>
       </div>
+
+      <motion.div
+        className="hero-scroll-hint"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.1, duration: 0.5 }}
+      >
+        <span>scroll</span>
+        <div className="scroll-line" />
+      </motion.div>
     </header>
   );
 };

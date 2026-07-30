@@ -5,12 +5,15 @@ import { faExternalLinkAlt, faCertificate } from '@fortawesome/free-solid-svg-ic
 
 const Certifications = () => {
   const certs = [
+    { title: 'Diploma in Office Automation and Computer Programming(DOACP)', link: 'https://drive.google.com/file/d/19PBXx_u_Di4r4TKQ5Z5SfeN8bxVWoA9b/view?usp=sharing' },
     { title: 'Certification in Java', link: 'https://drive.google.com/file/d/19bf-YGAgel3ww_t3NiTKkssMbGL46eUM/view?usp=sharing' },
     { title: 'Certification in Web Development Bootcamp', link: 'https://drive.google.com/file/d/1LCBc8sX72gW2iz-oBcanZ2Cu3LoLeWhV/view?usp=sharing' },
+    { title: 'Introduction To Internet Of Things', link: 'https://drive.google.com/file/d/1tOJ3UZgdWb-A8F81Z817Dn0_tYSDqJsJ/view?usp=sharing' },
     { title: 'Certification in MERN Stack', link: 'https://drive.google.com/file/d/1oDAA5ywT-galAy1K5cGLPXl1DDzU7i4O/view?usp=sharing' },
+    { title: 'Data Structure and Algorithm', link: 'https://drive.google.com/file/d/12_fLE8Z7-nxC9lWlnRTf1J7KED_C49sd/view?usp=sharing' },
   ];
 
-  return (
+  return (  
     <section id="certifications" className="certifications section">
       <motion.div
         className="section-header"

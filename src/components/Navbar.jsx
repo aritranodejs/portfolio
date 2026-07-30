@@ -43,7 +43,10 @@ const Navbar = () => {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
       <a href="#about" className="site-nav-logo" aria-label="Go to about section">
-        <span className="logo-bracket">[</span>AD<span className="logo-bracket">]</span>
+        <span className="site-nav-logo__mark" aria-hidden="true">
+          <span className="logo-bracket">[</span>AD<span className="logo-bracket">]</span>
+        </span>
+        <span className="site-nav-logo__text">Aritra</span>
       </a>
 
       <button
